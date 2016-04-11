@@ -123,7 +123,7 @@
             .on("click", redraw);
 
 
-          
+
       // Bind the data to the SVG and create one path per GeoJSON feature
       svg.selectAll("path")
           .data(json.features)
@@ -201,8 +201,6 @@
     function redraw() {
 
      buttonYear = d3.select(this).attr("id");
-
-
 
 
      console.log("here", buttonYear);
