@@ -1,0 +1,179 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400italic|Poiret+One|Ubuntu|Oxygen);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400italic|Poiret+One|Ubuntu);
+
+
+
+.container {
+  width: 1050px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h1,h2 {
+  margin-top: 30px;
+  padding: 0px 0 5px 0;
+  text-align: center;
+  line-height: 1.2em;
+  font-family: 'Dosis', sans-serif;
+  color: black;
+}
+
+strong {
+  margin-left: 13px;
+}
+
+a {
+  color: rgb(205,115,225);
+}
+#intro {
+    margin-top: 24px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+}
+.chart {
+  float: left;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-top:0;
+  padding-left:0;
+}
+
+.legend {
+    position:absolute;
+    left:800px;
+    top:350px;
+}
+
+path {
+    stroke: White;
+    stroke-width: 1;
+}
+
+#smallMultipleBar1 svg {
+  font-size: 9px;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  background-color: rgba(206,206,206,0.3)
+}
+
+.background {
+  fill: none;
+}
+
+.axis {
+  font-size: 12px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.area {
+  fill: #99CCFF;
+}
+
+.line {
+  fill: none;
+  stroke: #334C80;
+  stroke-width: 1.4px;
+}
+
+
+.title {
+  font-size: 12px;
+}
+
+.axis line, .grid line {
+  stroke-width: .5px;
+  shape-rendering: crispEdges;
+  stroke: #fff;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.axis path {
+  display: none;
+}
+
+.hidden {
+  display:none;
+  opacity: 0.0;
+}
+
+#button-wrap {
+  margin-left: 200px;
+  margin-right: auto;
+  height: 40px;
+  margin-bottom: 30px;
+  padding-left: 5px;
+}
+
+#map {
+  margin-bottom: 100px;
+}
+
+#button-wrap2 {
+  margin-left: 200px;
+  margin-right: auto;
+  height: 40px;
+  margin-bottom: 30px;
+  padding-left: 5px;
+}
+
+#smallMultipleBar1 {
+    width: 1050px;
+    font-size: 9px;
+    margin-right: 5px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+
+   }
+
+
+.button {
+  cursor: pointer;
+  float: left;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background: #fcfcfc;
+  border: 1px solid #cecece;
+  display: block;
+  padding-top: 5px;
+  margin-top: 30px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.button.active {
+  box-shadow: inset 0px 0px 7px
+  pointer-events: none;
+  background-color: rgba(205,115,225,0.7);
+}
+
+.mytooltip {
+    position: absolute;
+    min-width: 120px;
+    height: 60px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background-color: #D8FFFF;
+    border: rgba(230,230,230,1) 1px solid;
+    border-radius: 5px;
+    pointer-events: none;
+    font-family: "Open Sans", sans-serif;
+    font-size:14px;
+    line-height: 1.4;
+    z-index: 100;
+}
+ .mytooltip p{
+   margin-top: 10px;
+   margin-right: 10px;
+ }
