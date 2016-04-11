@@ -18,9 +18,9 @@
 
         <div class="chart" id="map">
         <h2> The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010. </h2>
-        <div id="button-wrap1">
-        <div id="ASD_prevalence_in2000" class="button active total">Year 2000</div>
-        <div id="ASD_prevalence_in2010" class="button total">Year 2010</div>
+        <div id="button-wrap">
+        <div id="ASD_prevalence_in2000" class="button active total">2000</div>
+        <div id="ASD_prevalence_in2010" class="button total">2010</div>
         </div>
         </div>
 
@@ -41,7 +41,7 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-  <script src="js/queue.v1.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
   <script src="js/isotope.pkgd.min.js"></script>
   <script src="js/d3-legend.min.js"></script>
 
@@ -84,7 +84,7 @@
 
     var tooltip = d3.select("body").append("div").attr("class", "mytooltip map");
 
-    queue()
+      queue()
       .defer(d3.json, "data/us-states.json")
       .defer(d3.csv, "data/PrevalenceofAutismandIDforAges3to21.csv")
       .await(ready);
@@ -122,8 +122,6 @@
       var botton = d3.selectAll(".button.total")
             .on("click", redraw);
 
-
-          
       // Bind the data to the SVG and create one path per GeoJSON feature
       svg.selectAll("path")
           .data(json.features)
@@ -196,35 +194,15 @@
 
     svg.select(".legendLinear")
     .call(legendLinear);
+};
 
 
     function redraw() {
 
      buttonYear = d3.select(this).attr("id");
-
-
-
-
      console.log("here", buttonYear);
 
      stateColor.domain(d3.extent(statesdata, function(s) {return +s[buttonYear];}));
-
-     svg.select(".legendLinear")
-     .remove();
-
-     var linear = stateColor;
-
-     svg.append("g")
-     .attr("class", "legendLinear")
-     .attr("font-size","12px")
-     .attr("font-family","Ubuntu")
-     .attr("transform", "translate(560, 5)");
-
-
-     var legendLinear = d3.legend.color()
-     .shapeWidth(40)
-     .orient("horizontal")
-     .scale(linear);
 
      svg.select(".legendLinear")
      .call(legendLinear);
@@ -242,7 +220,6 @@
 }
 };
 
-}
 
 
 
