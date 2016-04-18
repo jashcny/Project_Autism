@@ -26,18 +26,31 @@ h1,h2 {
   color: black;
 }
 
+
 strong {
   margin-left: 13px;
 }
 
+
+#form {
+  margin-left: 280px;
+  margin-top: 50px;
+}
+
+
+
 a {
   color: rgb(205,115,225);
 }
+
+
 #intro {
     margin-top: 24px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
 }
+
+
 .chart {
   float: left;
   padding-right: 5px;
@@ -62,12 +75,35 @@ path {
   margin-right: 5px;
   margin-left: 10px;
   margin-bottom: 20px;
-  margin-top: 30px;
+  float:right
   background-color: rgba(206,206,206,0.3)
+}
+
+#part2 {
+  display: inline
+  width:300px;
+}
+
+#part3 {
+width: 360px;
+margin-top: 50px;
+margin-left: 40px;
+text-align: justify;
+font-family: 'Ubuntu', sans-serif;
+font-size: 18px;
 }
 
 .background {
   fill: none;
+}
+
+#group {
+  margin-top: -650px;
+  margin-left: 200px;
+}
+
+#part4 {
+margin-top: 600px;
 }
 
 .axis {
@@ -152,11 +188,29 @@ path {
   border-radius: 5px 5px 5px 5px;
 }
 
-.button.active {
+.active {
   box-shadow: inset 0px 0px 7px
   pointer-events: none;
   background-color: rgba(205,115,225,0.7);
 }
+
+.tooltip {
+    position: absolute;
+    z-index: 10;
+    opacity: 1;
+  }
+
+.tooltip p {
+    width: initial;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.4;
+    color: black;
+    font-size: 13px;
+    background-color: rgba(255,255,255,0.8);
+    border: rgba(230,230,230,1) 1px solid;
+    padding: 5px 7px 5px 7px;
+    border-radius: 10px;
+ }
 
 .mytooltip {
     position: absolute;

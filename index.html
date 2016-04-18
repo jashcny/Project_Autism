@@ -3,7 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" media="screen" href="css/screen.css" />
+<link rel="stylesheet" media="screen" href="css/style.css" />
 
 </head>
 <body>
@@ -15,15 +15,34 @@
     </div>
 
     <div id="main">
-
         <div class="chart" id="map">
         <h2> The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010. </h2>
         <div id="button-wrap1">
         <div id="ASD_prevalence_in2000" class="button active total">Year 2000</div>
         <div id="ASD_prevalence_in2010" class="button total">Year 2010</div>
         </div>
-        </div>
+      </div>
 
+        <h2>Additional costs for Children with ASD, comprared to ASD</h2>
+        <div id="part2">
+          <div id="part3">
+        <p> Large amounts of money has to paid for caring a child with ASD. But what kinds of economic burden their parents and society have to bear? This illustrates the regression-adjusted differences in non–health care costs for children with ASD compared with children without ASD, by severity and diagnostic subgroups. Study samples are ranging from children ages 3 to 17 years with and without parent-reported ASD.</p>
+        <p>(1) Time costs were converted to a dollar value by multiplying the number of hours spent on each caregiving activity by the 2011 mean wage rate for all US workers ($23/hour).</p>
+        <p>(2) School represents the special education services that ASD children received from their schools, principally are from public schools</p>
+        <p>(3) All kinds of resources that used to look after children with parent-reported ASD such as children care,legal services,and transportation are ascribed to family-corridinated services</p>
+      </div>
+        <div id="group">
+        <div id="form">
+        <label><input type="radio" name="mode" value="bycount" checked>Raw Count</label>
+        <label><input type="radio" name="mode" value="bypercent">As Percent of Service</label>
+
+        <div class="chart" id="stackedbar1"></div>
+        </div>
+      </div>
+
+
+
+        <div id="part4">
         <h2>Estimated prevalence of autism spectrum disorder among children aged 8 years by race and state</h2>
         <p><strong>Abbreviations:</strong> API = Asian/Pacific Islander.</p>
         <div id="button-wrap2">
@@ -34,415 +53,28 @@
         <div id="api" class="button race">API</div>
         <div id="State" class="button race">STATE</div>
         </div>
+      </div>
         <div class="chart" id="smallMultipleBar1"></div>
 
+
+
+
+
     </div>
-  </div> <!--! end of #container -->
+  </div> <!--! end of #container -->'
+
+
+
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   <script src="js/queue.v1.min.js"></script>
   <script src="js/isotope.pkgd.min.js"></script>
   <script src="js/d3-legend.min.js"></script>
+  <script src="js/smallMultipleBar.js"></script>
+  <script src="js/stackedbar.js"></script>
+  <script src="js/mapforState.js"></script>
+  <script src="js/queue_loading.js"></script>
 
-
-  <script>
-//section one
-//Map
-
-
-    var mapforState;
-    var smallMultipleBar;
-
-
-    function mapforState() {
-    var width = 960;
-    var height = 500;
-
-    // D3 Projection
-    var projection = d3.geo.albersUsa()
-                     .translate([width/2, height/2])    // translate to center of screen
-                     .scale([1000]);          // scale things down so see entire US
-
-    // Define path generator
-    var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
-               .projection(projection);  // tell path generator to use albersUsa projection
-
-
-    // Define linear scale for output
-    var stateColor = d3.scale.linear().range(["#D8FFFF","#00A2EA"]).interpolate(d3.interpolateLab);
-
-
-    //Create SVG element and append map to the SVG
-    var svg = d3.select("#map")
-              .append("svg")
-              .attr("width", width)
-              .attr("height", height);
-
-
-    var buttonYear = "ASD_prevalence_in2000";
-
-    var tooltip = d3.select("body").append("div").attr("class", "mytooltip map");
-
-    queue()
-      .defer(d3.json, "data/us-states.json")
-      .defer(d3.csv, "data/PrevalenceofAutismandIDforAges3to21.csv")
-      .await(ready);
-
-    var statesdata;
-
-    function ready(error, json, states) {
-
-      statesdata = states;
-
-    stateColor.domain(d3.extent(states, function(s) {return +s[buttonYear];}));
-
-
-      // Loop through each state data value in the .csv file
-      states.forEach(function(state) {
-          // Grab State Name
-          var dataState = state.State; // name
-          // Grab data value
-          var dataValue2000 = +state.ASD_prevalence_in2000;// number
-          var dataValue2010 = +state.ASD_prevalence_in2010;
-
-          // Find the corresponding state inside the GeoJSON
-          json.features.forEach(function(j) {
-              var jsonState = j.properties.name;
-              if (dataState == jsonState) { // assumes the names will match...
-                  // Copy the data value into the JSON
-                  j.properties.ASD_prevalence_in2000 = dataValue2000;
-                  j.properties.ASD_prevalence_in2010 = dataValue2010;
-              // Stop looking through the JSON
-
-              }
-          });
-      }); // ends data merge
-
-      var botton = d3.selectAll(".button.total")
-            .on("click", redraw);
-
-
-
-      // Bind the data to the SVG and create one path per GeoJSON feature
-      svg.selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path")
-          .classed("state", true)
-          .attr("d", path)
-          .style("fill", function(d) {
-              // Get data value for visited
-              var value = d.properties[buttonYear];
-              return stateColor(value);
-           })
-           .on("mouseover", mouseover)
-           .on("mousemove", mousemove)
-           .on("mouseout", mouseout);
-
-    d3.selection.prototype.moveToFront = function() {
-    return this.each(function(){
-      this.parentNode.appendChild(this);
-    });
-    };
-
-
-    function mouseover(d) {
-
-      d3.select(this)
-        .transition()
-        .style("stroke", "white")
-        .style("stroke-width", "2.5");
-
-      d3.select(this).moveToFront();
-
-      console.log(tooltip);
-
-      tooltip
-       .style("display", null) // this removes the display none setting from it
-       .html("<p><strong>State: </strong>"+d.properties.name+"</br>"+"<strong>Number enrolled out of 10,000 children:  </strong>"+ (d.properties[buttonYear])+"</p>");
-    }
-
-    function mousemove(d) {
-      tooltip
-        .style("top", (d3.event.pageY - 10) + "px" )
-        .style("left", (d3.event.pageX + 10) + "px");
-      }
-
-
-    function mouseout(d) {
-      d3.select(this)
-        .transition()
-        .style("stroke", null)
-        .style("stroke-width", null);
-
-      tooltip.style("display", "none");  // this sets it to invisible!
-    }
-
-
-    var linear = stateColor;
-
-    svg.append("g")
-    .attr("class", "legendLinear")
-    .attr("font-size","12px")
-    .attr("font-family","Ubuntu")
-    .attr("transform", "translate(560, 5)");
-
-
-    var legendLinear = d3.legend.color()
-    .shapeWidth(40)
-    .orient("horizontal")
-    .scale(linear);
-
-    svg.select(".legendLinear")
-    .call(legendLinear);
-
-
-    function redraw() {
-
-     buttonYear = d3.select(this).attr("id");
-
-
-     console.log("here", buttonYear);
-
-     stateColor.domain(d3.extent(statesdata, function(s) {return +s[buttonYear];}));
-
-     svg.select(".legendLinear")
-     .remove();
-
-     var linear = stateColor;
-
-     svg.append("g")
-     .attr("class", "legendLinear")
-     .attr("font-size","12px")
-     .attr("font-family","Ubuntu")
-     .attr("transform", "translate(560, 5)");
-
-
-     var legendLinear = d3.legend.color()
-     .shapeWidth(40)
-     .orient("horizontal")
-     .scale(linear);
-
-     svg.select(".legendLinear")
-     .call(legendLinear);
-
-  // we might want to redo the color scale and legend here, not sure.
-
-    svg.selectAll("path.state")
-        .transition()
-        .style("fill", function(d,i) {
-      // Get data value for visited
-        var value = d.properties[buttonYear];
-        return stateColor(value);
-     });
-
-}
-};
-
-}
-
-
-
-
- function smallMultipleBar() {
-
-   var margin = {top: 60, right: 10, bottom: 50, left: 40},
-       width = 320 - margin.left - margin.right,
-       height = 300 - margin.top - margin.bottom;
-
-   var x = d3.scale.ordinal()
-       .rangeRoundBands([0, width], .45);
-
-   var y = d3.scale.linear()
-       .range([height, 0]);
-
-   var xAxis = d3.svg.axis()
-       .scale(x)
-       .orient("bottom");
-
-   var yAxis = d3.svg.axis()
-       .scale(y)
-       .ticks(4)
-       .orient("left");
-
-
-   d3.csv("data/autism_by_race.csv", reformat, function(error, data) {
-     if (error) throw error;
-
-     x.domain(["White","Black","Hispanic","API"]);
-     y.domain([0, d3.max(data, function(d) { return d3.max(d.values, function(j){
-       return j.value;})})]);
-
-       d3.select("#smallMultipleBar1").datum(data).each(drawCharts);
-
-
-     function drawCharts(myData) {
-
-       var div = d3.select(this).selectAll(".chart").data(myData);
-
-       div.enter()
-         .append("div")
-         .attr("class", "chart");
-
-       var svg = div
-         .append("svg")
-         .attr("width", width + margin.left + margin.right)
-         .attr("height", height + margin.top + margin.bottom)
-         .append("g")
-         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-     svg.append("g")
-         .attr("class", "x axis")
-         .attr("transform", "translate(0," + height + ")")
-         .call(xAxis);
-
-     svg.append("g")
-         .attr("class", "y axis")
-         .call(yAxis)
-       .append("text")
-         .attr("transform", "rotate(-90)")
-         .attr("y", 5)
-         .attr("dy", ".45em")
-         .attr("font-size",10)
-         .style("text-anchor", "end")
-         .text("Percent");
-
-
-     var caption = svg.append("text")
-         .attr("class", "caption")
-         .attr("text-anchor", "middle")
-         .style("pointer-events", "none")
-         .attr("dx",160)
-         .attr("font-size",17)
-         .attr("dy", -8)
-         .style("text-anchor", "end")
-         .attr("font-weight","bold")
-         .text(function(d) { return d.State;});
-
-     svg.selectAll(".bar")
-         .data(function(d) {return d.values;})
-       .enter().append("rect")
-         .attr("class", "bar")
-         .attr("x", function(d) { return x(d.race); })
-         .attr("width", x.rangeBand())
-         .attr("y", function(d) { return y(d.value); })
-         .style("fill", function(d){
-           if (d.race === "White") {
-             return "rgba(17,179,240,0.8)";
-           } else if (d.race === "Black") {
-             return "rgba(233, 42, 58,0.6)";
-           } else if (d.race === "Hispanic") {
-             return "rgba(64,187,126,0.8)";
-           } else {
-             return "rgba(255,204,1,0.8)";
-             }
-         })
-         .attr("height", function(d) { return height - y(d.value); });
-
-     svg.selectAll("text.bar")
-     .data(function(d) {return d.values;})
-     .enter().append("text")
-     .attr("class", "bar")
-     .attr("x", function(d) { return x(d.race); })
-     .attr("y", function(d) { return y(d.value); })
-     .attr("dy", "-10px")
-     .attr("dx","8.5px")
-     .attr("font-weight","bold")
-     .text(function(d) {return d.value;});
-
-
-       } // end of drawchart
-
-       setupIsotope();
-
-       d3.select("#button-wrap2").selectAll("div").on("click", function() {
-         var id;
-         id = d3.select(this).attr("id");
-         d3.select("#button-wrap2").selectAll("div").classed("active", false);
-         d3.select("#" + id).classed("active", true);
-         return $("#smallMultipleBar1").isotope({
-           sortBy: id
-         });
-       });
-
-   }); // end of csv
-
-   function reformat(d) {
-     d.values = [{ race: "White", value: +d["White"]},
-                 { race: "Black", value: +d["Black"]},
-                 { race: "Hispanic", value: +d["Hispanic"]},
-                 { race: "API", value: +d["API"]}];
-     return d;
-   }
-
-
-   function mouseover() {
-     d3.selectAll("height").classed("hidden", true);
-     return mousemove.call(this);
-   };
-
-
-   function setupIsotope() {
-     console.log("called setup");
-     $("#smallMultipleBar1").isotope({
-       itemSelector: '.chart',
-       layoutMode: 'fitRows',
-       sortAscending: {
-         State: true,
-         white: false,
-         black:false,
-         hispanic:false,
-         api:false,
-         total:false
-       },
-       getSortData: {
-        white: function(e) {
-         var d;
-         d = d3.select(e).datum();
-         console.log("white fired", d);
-         return +d.values.filter(function(d) { return d.race === "White";})[0].value;
-       },
-         black: function(e) {
-         var d;
-         d = d3.select(e).datum();
-         return +d.values.filter(function(d) { return d.race === "Black";})[0].value;
-       },
-         hispanic: function(e) {
-         var d;
-         d = d3.select(e).datum();
-         return +d.values.filter(function(d) { return d.race === "Hispanic";})[0].value;
-       },
-         api: function(e) {
-         var d;
-         d = d3.select(e).datum();
-         return +d.values.filter(function(d) { return d.race === "API";})[0].value;
-       },
-         State: function(e) {
-           var d;
-           d = d3.select(e).datum();
-           return d.State;
-         },
-         total: function(e) {
-           var d;
-           d = d3.select(e).datum();
-           return d.Total;
-         }
-       }
-       });
-       return $("#vis").isotope({
-         sortBy: 'total'
-       });
-   } // end setup isotope
-   // end button setup
-};
-
-//make charts!!!
-
-  mapforState();
-  smallMultipleBar();
-
-
-</script>
 </body>
 </html>
