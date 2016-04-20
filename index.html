@@ -8,42 +8,67 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1> Autism</h1>
+
+  <!-- <div id="part2"> -->
+  <div class="title"> Additional costs for Children with ASD, comprared to ASD </div>
+  <div id="graphic">
+    <div id="sections">
+      <section class="step">
+        <text> Large amounts of money has to paid for caring a child with ASD. But what kinds of economic burden their parents and society have to bear? This illustrates the regression-adjusted differences in non–health care costs for children with ASD compared with children without ASD, by severity and diagnostic subgroups. Study samples are ranging from children ages 3 to 17 years with and without parent-reported ASD.</text>
+      </section>
+
+      <section class="step">
+      <text> Time costs were converted to a dollar value by multiplying the number of hours spent on each caregiving activity by the 2011 mean wage rate for all US workers ($23/hour). </text>
+      </section>
+
+      <section class="step">
+      <text> School represents the special education services that ASD children received from their schools, principally are from public schools. </text>
+      </section>
+
+      <section class="step">
+      <text> All kinds of resources that used to look after children with parent-reported ASD such as children care,legal services,and transportation are ascribed to family-corridinated services. </text>
+      </section>
+
+
+</div>
+
+<div id="vis"></div>
+
+  <div id="container1">
+    <h1 class="headline"> Autism</h1>
     <div id="intro">
       <p><strong>Introduction:</strong>  Autism spectrum disorders (ASDs) are a group of developmental disabilities characterized by impairments in social interaction and communication and by restricted, repetitive, and stereotyped patterns of behavior. Symptoms typically are apparent before age 3 years.</p>
     </div>
 
     <div id="main">
         <div class="chart" id="map">
-        <h2> The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010. </h2>
+        <h2 class="subtitle"> The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010. </h2>
         <div id="button-wrap1">
         <div id="ASD_prevalence_in2000" class="button active total">Year 2000</div>
         <div id="ASD_prevalence_in2010" class="button total">Year 2010</div>
         </div>
       </div>
 
-        <h2>Additional costs for Children with ASD, comprared to ASD</h2>
-        <div id="part2">
-          <div id="part3">
-        <p> Large amounts of money has to paid for caring a child with ASD. But what kinds of economic burden their parents and society have to bear? This illustrates the regression-adjusted differences in non–health care costs for children with ASD compared with children without ASD, by severity and diagnostic subgroups. Study samples are ranging from children ages 3 to 17 years with and without parent-reported ASD.</p>
-        <p>(1) Time costs were converted to a dollar value by multiplying the number of hours spent on each caregiving activity by the 2011 mean wage rate for all US workers ($23/hour).</p>
-        <p>(2) School represents the special education services that ASD children received from their schools, principally are from public schools</p>
-        <p>(3) All kinds of resources that used to look after children with parent-reported ASD such as children care,legal services,and transportation are ascribed to family-corridinated services</p>
-      </div>
-        <div id="group">
-        <div id="form">
-        <label><input type="radio" name="mode" value="bycount" checked>Raw Count</label>
-        <label><input type="radio" name="mode" value="bypercent">As Percent of Service</label>
+</div>
 
-        <div class="chart" id="stackedbar1"></div>
-        </div>
+
+
+    <!--
+    <div id="group">
+    <div id="form">
+    <label><input type="radio" name="mode" value="bycount" checked>Raw Count</label>
+    <label><input type="radio" name="mode" value="bypercent">As Percent of Service</label>
+
       </div>
+    </div> -->
+  </div> <!-- end of graphic -->
+
+
 
 
 
         <div id="part4">
-        <h2>Estimated prevalence of autism spectrum disorder among children aged 8 years by race and state</h2>
+        <h2 class="subtitle2">Estimated prevalence of autism spectrum disorder among children aged 8 years by race and state</h2>
         <p><strong>Abbreviations:</strong> API = Asian/Pacific Islander.</p>
         <div id="button-wrap2">
         <div id="total" class="button active race">TOTAL</div>
@@ -57,10 +82,6 @@
         <div class="chart" id="smallMultipleBar1"></div>
 
 
-
-
-
-    </div>
   </div> <!--! end of #container -->'
 
 
@@ -68,13 +89,16 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script type="text/javascript" src="js/mfreeman_scroller.js"></script>
   <script src="js/queue.v1.min.js"></script>
   <script src="js/isotope.pkgd.min.js"></script>
   <script src="js/d3-legend.min.js"></script>
   <script src="js/smallMultipleBar.js"></script>
   <script src="js/stackedbar.js"></script>
   <script src="js/mapforState.js"></script>
+  <script type="text/javascript" src="js/scroller_settings2.js"></script>
   <script src="js/queue_loading.js"></script>
+
 
 </body>
 </html>

@@ -1,12 +1,115 @@
 
+<!DOCTYPE html>
+<!-- code loosely inspired by this block https://gist.github.com/mstanaland/6100713 -->
+<meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Dosis);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400italic|Poiret+One|Ubuntu|Oxygen);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400italic|Poiret+One|Ubuntu);
 
-function stackedbar(data) {
-var settings = {};
+body {
+  font: 12px sans-serif;
+  padding: 50px;
+  margin-left: 20%;
+  margin-bottom:100px;
+}
+
+h2 {
+  margin-left: 140px;
+  margin-bottom: 50px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 28px;
+  color: rgb(233, 42, 58);
+}
+
+p {
+  font-size: 16px;
+  margin-left: 70px;
+  font-family: 'Ubuntu', sans-serif;
+  }
+
+#form {
+      position: relative;
+      right: 2px;
+      top: 20px;
+      font-size: 13px;
+      font-family: 'Ubuntu', sans-serif;
+}
+
+.legend {
+  font-size: 13px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+svg {
+  background-color: rgba(203,222,229,0.5)	;
+  padding-left: 25px;
+  margin-top: 40px;
+}
+
+.axis {
+  font-size: 13px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 10;
+    opacity: 1;
+  }
+
+.tooltip p {
+    width: initial;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.4;
+    color: black;
+    font-size: 13px;
+    background-color: rgba(255,255,255,0.8);
+    border: rgba(230,230,230,1) 1px solid;
+    padding: 5px 7px 5px 7px;
+    border-radius: 10px;
+ }
+
+</style>
+<body>
+
+  <h2>An estimation of major religious group</h2>
+  <p>This Stacked bars illustrate estimated religion by top 5 countries in 2010.</p>
+  <p>source: A report of the Global Religious Landscape from <a href="http://www.pewforum.org/2012/12/18/global-religious-landscape-exec/">Pew Research Center.</a></p>
+    <div id="form">
+      <label><input type="radio" name="mode" value="bycount" checked>Raw Count</label>
+      <label><input type="radio" name="mode" value="bypercent">As Percent of Service</label>
+    </div>
+  <div id="chart"></div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script>
+
+
+
+
+
+
+
+
 var currentMode = "bycount";
 
-var fullwidth = 600, fullheight = 530;
+var fullwidth = 700, fullheight = 530;
 
-var margin = {top: 20, right: 150, bottom: 100, left: 40},
+var margin = {top: 20, right: 150, bottom: 50, left: 40},
     width = fullwidth - margin.left - margin.right,
     height = fullheight - margin.top - margin.bottom;
 
@@ -16,7 +119,7 @@ var xScale = d3.scale.ordinal()
 var yScale = d3.scale.linear()
     .rangeRound([height, 0]);
 
-var color = d3.scale.category10();
+var color = d3.scale.category20();
 
 var xAxis = d3.svg.axis()
     .scale(xScale)
@@ -32,7 +135,7 @@ var yAxis = d3.svg.axis()
 var stack = d3.layout
     .stack(); // default view is "zero" for the count display.
 
-var svg = d3.select("#vis").append("svg")
+var svg = d3.select("#chart").append("svg")
     .attr("width", fullwidth)
     .attr("height", fullheight)
     .append("g")
@@ -40,13 +143,17 @@ var svg = d3.select("#vis").append("svg")
 
 var tooltip = d3.select("body").append("div").attr("class", "tooltip");
 
+d3.csv("data/cost.csv", function(error, data) {
+  if (error) {
+    console.log(error);
+  }
 
   data.sort(function(a, b) {return d3.ascending(a.Subgroups,b.Subgroups);});
   // how would we sort by largest total bar?  what would we have to calculate?
 
   var services = ["School","Time","Alternative"];
 
-  color.domain(services);
+  color.domain(services );
 
   xScale.domain(data.map(function(d) { return d.Subgroups; }));
 
@@ -62,25 +169,12 @@ var tooltip = d3.select("body").append("div").attr("class", "tooltip");
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-      .append("text")
+    .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 1)
-      .attr("dx",'-1em')
-      .attr("dy", "0.6em")
+      .attr("y", 6)
+      .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Dollar");
-
-  svg.append("text")
-      .attr("class", "xlabel")
-      .attr("transform", "translate(" + (margin.left + width / 2) + " ," +
-               (height + margin.bottom) + ")")
-      .style("text-anchor", "middle")
-      .attr("dy", "-25")
-      .attr("dx","-68")
-      .attr("font-family","Ubuntu")
-      .attr("font-size","17px")
-      .text("Year");
-
+      .text("people");
 
   transitionCount(); // this will use the by-count stack, and make the data, and draw.
 
@@ -210,10 +304,10 @@ var tooltip = d3.select("body").append("div").attr("class", "tooltip");
 
   tooltip
     .style("display", null) // this removes the display none setting from it
-    .html("<p>Service: " + d.service.replace(/_/g, " ") +
-          "<br>Money: "+ "$"+" "+ number +
+    .html("<p>service: " + d.service.replace(/_/g, " ") +
+          "<br>People: " + number +
           "<br>Subgroups: " + d.x + " </p>");
-  } // end mouseover
+  }
 
   function mousemove(d) {
     tooltip
@@ -225,7 +319,9 @@ var tooltip = d3.select("body").append("div").attr("class", "tooltip");
     d3.select(this)
       .transition()
       .style("stroke", "none");
+
     tooltip.style("display", "none");  // this sets it to invisible!
   }
+});
 
-}
+</script>

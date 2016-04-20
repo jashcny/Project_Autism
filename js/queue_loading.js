@@ -12,6 +12,7 @@ function ready(error, json, states, money,race) {
   mapforState(json, states);
   stackedbar(money);
   smallMultipleBar(race);
+  display();
 
 }
 
