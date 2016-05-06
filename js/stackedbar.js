@@ -38,7 +38,7 @@ var svg = d3.select("#vis").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+var tooltip = d3.select("body").append("div").attr("class", "tooltip5");
 
 
   data.sort(function(a, b) {return d3.ascending(a.Subgroups,b.Subgroups);});

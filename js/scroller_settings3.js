@@ -1,53 +1,59 @@
 
 // For use with scroller_template2.html and mfreeman_scroller.js.
 
+var vis = d3.select("#vis");
 
-var map = d3.select("#map");
-var dot = d3.select("#dot")
 
 
 var update = function(value) {
-  var show_map = false;
-  //var localdata = data;
 
-  var show_dot = false;
+  //var localdata = data;
+  var show_vis = false;
   switch(value) {
 
     case 1:
       console.log("in case", value);
       //localdata = data;
+      show_vis = true;
 
-      show_map = true;
-      show_dot = false;
       break;
     case 2:
       console.log("in case", value);
     //  localdata = data;
-      show_map = false;
-      show_dot = true;
+      show_vis = true;
+
+      break;
+    case 3:
+      console.log("in case", value);
+      show_vis = true;
+
+      //yScale = d3.scale.sqrt().range([margin.top, height - margin.bottom]);
+    //  localdata = data;
+      break;
+    case 4:
+      console.log("in case", value);
+      show_vis = true;
+
+      //yScale = d3.scale.sqrt().range([margin.top, height - margin.bottom]);
+    //  localdata = data;
       break;
 
-  
+
     default:
-      show_map = false;
-      show_dot = false;
+      show_vis = false;
+
       //focus_country(country);
     //  draw_lines(localdata);
       break;
   }
+  console.log("show viz", show_vis);
 
-
-  if (show_map) {
-    map.style("display", "inline-block");
+  if (show_vis) {
+    vis.style("display", "inline-block");
   } else {
-    map.style("display", "none");
+    vis.style("display", "none");
   }
 
-  if (show_dot) {
-    dot.style("display", "inline-block");
-  } else {
-    dot.style("display", "none");
-  }
 
   //draw_lines(localdata); // we can update the data if we want in the cases. Draw before focus!
 //  focus_country(country); // this applies a highlight on a country.

@@ -2,101 +2,219 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css" rel="stylesheet" type="text/css">
+
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+
+ <link rel="stylesheet" href="css/jquery.stickyNavbar.css">
 <link rel="stylesheet" media="screen" href="css/style.css" />
 
 </head>
 <body>
+      <header>
+           <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/quTRG4J5NCg" frameborder="0" allowfullscreen></iframe>
+                     <div id="videoinline">
+                      <h1 class="headtitle1">What is Autism?</h1>
+                      <div class="textBox">
+                      <p class="headsection">Autism spectrum disorders (ASDs) are a group of developmental disabilities characterized by impairments in social interaction and communication and by restricted, repetitive, and stereotyped patterns of behavior. Symptoms typically are apparent before age 3 years.</p>
+                      </div>
+                     <div>
+      </header>
+
+      <!--Map-->
 
 
-  <!-- <div id="part2"> -->
-  <div class="title"> Additional costs for Children with ASD, comprared to ASD </div>
-  <div id="graphic">
-    <div id="sections">
-      <section class="step">
-        <text> Large amounts of money has to paid for caring a child with ASD. But what kinds of economic burden their parents and society have to bear? This illustrates the regression-adjusted differences in non–health care costs for children with ASD compared with children without ASD, by severity and diagnostic subgroups. Study samples are ranging from children ages 3 to 17 years with and without parent-reported ASD.</text>
-      </section>
-
-      <section class="step">
-      <text> Time costs were converted to a dollar value by multiplying the number of hours spent on each caregiving activity by the 2011 mean wage rate for all US workers ($23/hour). </text>
-      </section>
-
-      <section class="step">
-      <text> School represents the special education services that ASD children received from their schools, principally are from public schools. </text>
-      </section>
-
-      <section class="step">
-      <text> All kinds of resources that used to look after children with parent-reported ASD such as children care,legal services,and transportation are ascribed to family-corridinated services. </text>
-      </section>
-
-
+  <div id="header" class="header">
+   <nav id="nav">
+       <ul class="nav navbar-nav">
+           <li>
+             <a href="#graph1">Prevalence</a>
+           </li>
+           <li>
+             <a href="#graph2">ASD type</a>
+           </li>
+           <li>
+             <a href="#graph3">Gender</a>
+           </li>
+           <li>
+             <a href="#graph4">Race</a>
+           </li>
+           <li>
+             <a href="#graph5">Economic Burden</a>
+           </li>
+       </ul>
+   </nav>
 </div>
 
-<div id="vis"></div>
 
-  <div id="container1">
-    <h1 class="headline"> Autism</h1>
-    <div id="intro">
-      <p><strong>Introduction:</strong>  Autism spectrum disorders (ASDs) are a group of developmental disabilities characterized by impairments in social interaction and communication and by restricted, repetitive, and stereotyped patterns of behavior. Symptoms typically are apparent before age 3 years.</p>
-    </div>
+                                                 <!-- This is my first chart -->
 
-    <div id="main">
-        <div class="chart" id="map">
-        <h2 class="subtitle"> The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010. </h2>
+
+<div id="graph1" class="scrollto">
+    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1sA-85yz8k16TGDkT6A8Fo085W1VyvC8Yp5dJXDEIirM&font=Default&lang=en&initial_zoom=2&height=620' width='85%' height='620' frameborder='0'></iframe>
+  <h2 > The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010. </h2>
+  <div id="compare">
+        <div  id="map">
         <div id="button-wrap1">
         <div id="ASD_prevalence_in2000" class="button active total">Year 2000</div>
         <div id="ASD_prevalence_in2010" class="button total">Year 2010</div>
         </div>
       </div>
 
+<div class="chart" id="dot"></div>
 </div>
 
 
 
-    <!--
+<p id="mapintro">According to an estimation from CDC's Autism and Developmental Disabilities Monitoring (ADDM) Network, nearly 1 in 68 children has been identified with autism spectrum disorder(ASD). Now ASD is a sydrome that occurs in all racial, gender, and ethnic groups, but the prevalence varies from different identities.</p>
+
+
+</div>
+<div id="graph2" class="scrollto">
+<h2> Number and proportion within each diagnostic subtype in 11 states</h2>
+<div id="pieintro">
+<div class="chart" id="pie"> 	</div>
+
+<div id="pietext">
+<h3>Autistic Disorder (also called "classic" autism)<h3>
+<p>This is what most people think of when hearing the word "autism."  People with autistic disorder usually have significant language delays, social and communication challenges, and unusual behaviors and interests. Many people with autistic disorder also have intellectual disability.</p>
+
+<h3>Asperger Syndrome</h3>
+<p>People with Asperger syndrome usually have some milder symptoms of autistic disorder.  They might have social challenges and unusual behaviors and interests.  However, they typically do not have problems with language or intellectual disability.</p>
+
+<h3>Pervasive Developmental Disorder</h3>
+<p>People who meet some of the criteria for autistic disorder or Asperger syndrome, but not all, may be diagnosed with PDD-NOS. People with PDD-NOS usually have fewer and milder symptoms than those with autistic disorder.  The symptoms might cause only social and communication challenges.</p>
+</div>
+</div>
+</div>
+<div id="graph3" class="scrollto">
+  <h2>Austism is five times more common among boys than girls</h2>
+  <div id="scatterintro">
+  <div id="scatterPlotchart"></div>
+  <p id="scattertext">ASD is about 4.5 times more common among boys (1 in 42) than among girls (1 in 189)</p>
+</div>
+  </div>
+
+  <div id="tooltips" class="tool3">
+      <h3 class="area"></h3>
+      <div class="title">Female</div>
+      <div class="vall"></div>
+      <div class="danwei">(Prevalence (95% CI))</div>
+  </div>
+
+  <div id="tooltipScatter" class="tool3">
+      <h3 class="area"></h3>
+      <div class="scattertitle FemaleNo">Female</div>
+      <div class="vall FemaleNo"></div><br/>
+      <div class="danwei FemaleNo">(Prevalence (95% CI))</div>
+      <div class="scattertitle MaleNo">Male</div>
+      <div class="vall MaleNo"></div><br/>
+      <div class="danwei MaleNo">(Prevalence (95% CI))</div>
+      <div class="scattertitle RatioNo">Ratio</div>
+      <div class="vall RatioNo"></div><br/>
+      <div class="danwei RatioNo">(Male-to-female prevalence ratio)</div>
+  </div>
+</div>
+<div id="graph4" class="scrollto">
+
+  <h2 class="subtitle2">Estimated prevalence of autism spectrum disorder among children aged 8 years by race and state</h2>
+  <p id=abbrr><strong>Abbreviations:</strong> API = Asian/Pacific Islander.</p>
+  <div id="button-wrap2">
+  <div id="total" class="button active race">TOTAL</div>
+  <div id="white" class="button race">WHITE</div>
+  <div id="black" class="button race">BLACK</div>
+  <div id="hispanic" class="button race">HISPANIC</div>
+  <div id="api" class="button race">API</div>
+  <div id="State" class="button race">STATE</div>
+  </div>
+</div>
+  <div class="chart" id="smallMultipleBar1"></div>
+</div>
+
+
+<div id="graph5" class="scrollto">
+  <h2>Additional costs for Children with ASD, comprared to ASD</h2>
+  <div id="sst">
+<div id="vis">
     <div id="group">
     <div id="form">
     <label><input type="radio" name="mode" value="bycount" checked>Raw Count</label>
     <label><input type="radio" name="mode" value="bypercent">As Percent of Service</label>
-
       </div>
-    </div> -->
-  </div> <!-- end of graphic -->
+</div></div>
+
+<div id="stackintro">
+<p> Large amounts of money has to paid for caring a child with ASD. But what kinds of economic burden their parents and society have to bear? This illustrates the regression-adjusted differences in non–health care costs for children with ASD compared with children without ASD, by severity and diagnostic subgroups. Study samples are ranging from children ages 3 to 17 years with and without parent-reported ASD.</p>
+
+
+
+<p> Time costs were converted to a dollar value by multiplying the number of hours spent on each caregiving activity by the 2011 mean wage rate for all US workers ($23/hour). </p>
+
+
+<p> School represents the special education services that ASD children received from their schools, principally are from public schools. </p>
+
+
+
+<p> All kinds of resources that used to look after children with parent-reported ASD such as children care,legal services,and transportation are ascribed to family-corridinated services. </p>
+</div>
+
+
+</div>
+
+
+
+
+</div>
 
 
 
 
 
-        <div id="part4">
-        <h2 class="subtitle2">Estimated prevalence of autism spectrum disorder among children aged 8 years by race and state</h2>
-        <p><strong>Abbreviations:</strong> API = Asian/Pacific Islander.</p>
-        <div id="button-wrap2">
-        <div id="total" class="button active race">TOTAL</div>
-        <div id="white" class="button race">WHITE</div>
-        <div id="black" class="button race">BLACK</div>
-        <div id="hispanic" class="button race">HISPANIC</div>
-        <div id="api" class="button race">API</div>
-        <div id="State" class="button race">STATE</div>
-        </div>
-      </div>
-        <div class="chart" id="smallMultipleBar1"></div>
+    <footer>
+
+         <p class="footersource">Sources:</p>
+         <ul>
+             <li><a href="http://pediatrics.aappublications.org/content/133/3/e520"</a>http://pediatrics.aappublications.org/content/133/3/e520</li>
+             <li><a href="https://www.asws.org/WhatisAutism.aspx">https://www.asws.org/WhatisAutism.aspx</a></li>
+             <li><a href="http://www.cdc.gov/mmwr/volumes/65/ss/ss6503a1.htm">http://www.cdc.gov/mmwr/volumes/65/ss/ss6503a1.htm</a></li>
+             <li><a href="http://www.cdc.gov/mmwr/volumes/65/ss/ss6503a1.htm">http://www.cdc.gov/mmwr/volumes/65/ss/ss6503a1.htm</a></li>
+             <li><a href="http://drexel.edu/now/archive/2015/April/Autism-Indicators-Young-Adult-Transition/">http://drexel.edu/now/archive/2015/April/Autism-Indicators-Young-Adult-Transition/</a></li>
+             <li><a href="http://www.cdc.gov/ncbddd/autism/data.html">http://www.cdc.gov/ncbddd/autism/data.html</a></li>
+
+         </ul>
+      </footer>
+
+<div id="contact">
+  <p>Created by: <a href="www.hanhuang.me" >Han Huang</a></p>
+</div>
 
 
-  </div> <!--! end of #container -->'
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/stickynavbar.js/1.3.2/jquery.stickyNavbar.min.js"></script>
+    <!-- <script src="js/jquery.easing.min.js"></script> -->
+    <script src="js/wow.min.js"></script>
 
 
+    <!-- End of Nav  -->
 
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-  <script type="text/javascript" src="js/mfreeman_scroller.js"></script>
+  <!-- <script type="text/javascript" src="js/mfreeman_scroller.js"></script> -->
+  <!-- <script type="text/javascript" src="js/scroller_settings3.js"></script> -->
   <script src="js/queue.v1.min.js"></script>
   <script src="js/isotope.pkgd.min.js"></script>
   <script src="js/d3-legend.min.js"></script>
   <script src="js/smallMultipleBar.js"></script>
+  <script src="js/scatterPlot.js"></script>
   <script src="js/stackedbar.js"></script>
+  <script src="js/pie.js"></script>
+  <script src="js/dot_plot.js"></script>
   <script src="js/mapforState.js"></script>
-  <script type="text/javascript" src="js/scroller_settings2.js"></script>
   <script src="js/queue_loading.js"></script>
 
 

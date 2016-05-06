@@ -1,7 +1,7 @@
 
 
     function mapforState(json, states) {
-    var width = 960;
+    var width = 800;
     var height = 500;
 
     // D3 Projection
@@ -93,7 +93,7 @@
       console.log(tooltip);
 
       tooltip
-       .style("display", null) // this removes the display none setting from it
+       .style("display", "inline-block") // this removes the display none setting from it
        .html("<p><strong>State: </strong>"+d.properties.name+"</br>"+"<strong>Number enrolled out of 10,000 children:  </strong>"+ (d.properties[buttonYear])+"</p>");
     } // end mouseover
 
@@ -102,7 +102,6 @@
         .style("top", (d3.event.pageY - 10) + "px" )
         .style("left", (d3.event.pageX + 10) + "px");
       }
-
 
     function mouseout(d) {
       d3.select(this)
