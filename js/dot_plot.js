@@ -1,27 +1,31 @@
 
 function dot_plot(data) {
 
-var fullwidth = 400,
-    fullheight = 300;
+var fullwidth = 515,
+    fullheight = 410;
 
 // these are the margins around the graph. Axes labels go in margins.
-var margin = {top: 20, right: 25, bottom: 20, left: 90};
+var margin = {top:75, right: 25, bottom: 0, left: 110};
 
-var width = 400 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+var width = fullwidth - margin.left - margin.right,
+    height = fullheight - margin.top - margin.bottom;
 
-var widthScale = d3.scale.linear()
+var xScale = d3.scale.linear()
           .range([ 0, width]);
 
-var heightScale = d3.scale.ordinal()
+var yScale = d3.scale.ordinal()
           .rangeRoundBands([ margin.top, height], 0.2);
 
 var xAxis = d3.svg.axis()
-        .scale(widthScale)
+        .scale(xScale)
         .orient("bottom");
 
+var tooltipdot=d3.select("body")
+                 .append("div")
+                 .attr("class", "tooltipdot");
+
 var yAxis = d3.svg.axis()
-        .scale(heightScale)
+        .scale(yScale)
         .orient("left")
         .innerTickSize([0]);
 
@@ -30,25 +34,22 @@ var svg = d3.select("#dot")
       .attr("width", fullwidth)
       .attr("height", fullheight);
 
+data.forEach(function(d, i){
+      d.difference= (d.ASD_prevalence_in2010 - d.ASD_prevalence_in2000).toFixed(2);
+      });
+
+      var top10 = data.sort(function(a, b) {
+      return b.difference - a.difference;
+    }).slice(0, 10);
+
+console.log(top10);
 
 
-  data.sort(function(a, b) {
-    return d3.descending(+a.ASD_prevalence_in2010, +b.ASD_prevalence_in2010);
-  });
+  xScale.domain([0, 110]);
 
-  var top10 = data.sort(function(a, b) {
-  return b.ASD_prevalence_in2010 - a.ASD_prevalence_in2010;
-}).slice(0, 10); // cut off the top 20!
+  // js map: will make a new array out of all the d.State fields
+  yScale.domain(top10.map(function(d) { return d.State; } ));
 
-
-
-  // in this case, i know it's out of 100 because it's percents.
-  widthScale.domain([0, 110]);
-
-  // js map: will make a new array out of all the d.name fields
-  heightScale.domain(top10.map(function(d) { return d.State; } ));
-
-  // Make the faint lines from y labels to highest dot
 
   var linesGrid = svg.selectAll("lines.grid")
     .data(top10)
@@ -58,14 +59,14 @@ var svg = d3.select("#dot")
   linesGrid.attr("class", "grid")
     .attr("x1", margin.left)
     .attr("y1", function(d) {
-      return heightScale(d.State) + heightScale.rangeBand()/2;
+      return yScale(d.State) + yScale.rangeBand()/2;
     })
     .attr("x2", function(d) {
-      return margin.left + widthScale(+d.ASD_prevalence_in2010);
+      return margin.left + xScale(+d.ASD_prevalence_in2010);
 
     })
     .attr("y2", function(d) {
-      return heightScale(d.State) + heightScale.rangeBand()/2;
+      return yScale(d.State) + yScale.rangeBand()/2;
     });
 
   // Make the dotted lines between the dots
@@ -77,16 +78,16 @@ var svg = d3.select("#dot")
 
   linesBetween.attr("class", "between")
     .attr("x1", function(d) {
-      return margin.left + widthScale(+d.ASD_prevalence_in2000);
+      return margin.left + xScale(+d.ASD_prevalence_in2000);
     })
     .attr("y1", function(d) {
-      return heightScale(d.State) + heightScale.rangeBand()/2;
+      return yScale(d.State) + yScale.rangeBand()/2;
     })
     .attr("x2", function(d) {
-      return margin.left + widthScale(d.ASD_prevalence_in2010);
+      return margin.left + xScale(d.ASD_prevalence_in2010);
     })
     .attr("y2", function(d) {
-      return heightScale(d.State) + heightScale.rangeBand()/2;
+      return yScale(d.State) + yScale.rangeBand()/2;
     })
     .attr("stroke-dasharray", "5,5")
     .attr("stroke-width", function(d, i) {
@@ -97,8 +98,29 @@ var svg = d3.select("#dot")
       }
     });
 
+    linesBetween.on("mouseover", mouseoverline)
+                .on("mouseout", mouseoutline);
 
-  // Make the dots for 1990
+    function mouseoverline(d){
+      d3.select(this)
+      .transition(600)
+      .style("stroke-width","2px")
+      .style("stroke-dasharray", "5,0");
+    tooltipdot.style("display", null)
+              .style("top", (d3.event.pageY - 5) + "px" )
+              .style("left", (d3.event.pageX + 5) + "px")
+              .html("<p>"+d.difference+"</p>");
+              }
+
+    function mouseoutline(d){
+      d3.select(this)
+      .transition(500)
+      .style("stroke-width","0.5")
+      .style("stroke-dasharray", "5,5");
+    tooltipdot.style("display", "none");
+              }
+
+  // Make the dots for 2000
 
   var dots2000 = svg.selectAll("circle.y2000")
       .data(top10)
@@ -108,11 +130,11 @@ var svg = d3.select("#dot")
   dots2000
     .attr("class", "y2000")
     .attr("cx", function(d) {
-      return margin.left + widthScale(+d.ASD_prevalence_in2000);
+      return margin.left + xScale(+d.ASD_prevalence_in2000);
     })
-    .attr("r", heightScale.rangeBand()/2)
+    .attr("r", yScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return heightScale(d.State) + heightScale.rangeBand()/2;
+      return yScale(d.State) + yScale.rangeBand()/2;
     })
     .style("stroke", function(d){
       if (d.State === "Minnesota") {
@@ -121,13 +143,26 @@ var svg = d3.select("#dot")
     })
     .style("fill", function(d){
       if (d.State === "Minnesota") {
-        return "darkorange";
+        return "rgb(255,224,230)";
       }
-    })
-    .append("title")
-    .text(function(d) {
-      return d.State + " in 2000: " + d.ASD_prevalence_in2000 + "%";
     });
+
+//<-----create mouse events for dots2000------------>
+     dots2000.on("mouseover", mouseover2000)
+             .on("mouseout", mouseout2000);
+
+      function mouseover2000(d){
+      tooltipdot.style("display", null)
+                .style("top", (d3.event.pageY - 5) + "px" )
+                .style("left", (d3.event.pageX + 5) + "px")
+                .html("<p>"+d.ASD_prevalence_in2000+"</p>");
+                }
+
+      function mouseout2000(d){
+      tooltipdot.style("display", "none");
+                }
+
+    //<-----End------------>
 
   // Make the dots for 2010
 
@@ -139,11 +174,11 @@ var svg = d3.select("#dot")
   dots2010
     .attr("class", "y2010")
     .attr("cx", function(d) {
-      return margin.left + widthScale(+d.ASD_prevalence_in2010);
+      return margin.left + xScale(+d.ASD_prevalence_in2010);
     })
-    .attr("r", heightScale.rangeBand()/2)
+    .attr("r", yScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return heightScale(d.State) + heightScale.rangeBand()/2;
+      return yScale(d.State) + yScale.rangeBand()/2;
     })
     .style("stroke", function(d){
       if (d.State === "Minnesota") {
@@ -152,32 +187,86 @@ var svg = d3.select("#dot")
     })
     .style("fill", function(d){
       if (d.State === "Minnesota") {
-        return "#476BB2";
+        return "rgb(140,53,89)";
       }
-    })
-    .append("title")
-    .text(function(d) {
-      return d.State + " in 2010: " + d.ASD_prevalence_in2010 + "%";
     });
 
     // add the axes
+
+//<-----create mouse events for dots2010------------>
+    dots2010.on("mouseover", mouseover2010)
+            .on("mouseout", mouseout2010);
+
+    function mouseover2010(d){
+    tooltipdot.style("display", null)
+              .style("top", (d3.event.pageY - 5) + "px" )
+              .style("left", (d3.event.pageX + 5) + "px")
+              .html("<p>"+d.ASD_prevalence_in2010+"</p>");
+              }
+
+    function mouseout2010(d){
+    tooltipdot.style("display", "none");
+              }
+
+//<-----End------------>
 
   svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(" + margin.left + "," + height + ")")
     .call(xAxis);
 
-  svg.append("g")
+    svg.append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(" + margin.left + ",0)")
     .call(yAxis);
+
+    svg.append("text")
+    .attr("x",20)
+    .attr("y",35)
+    .attr("font-size","17px")
+    .attr("font-weight","bold")
+    .attr("font-family",'Raleway')
+    .style("text-anchor", "left")
+    .text("Top 10 states with the highest ASD prevalence increase rates");
+
+    svg.append("text")
+    .attr("x",130)
+    .attr("y",67)
+    .attr("font-size","12px")
+    .attr("font-weight","bold")
+    .attr("font-family",'Raleway')
+    .style("text-anchor", "left")
+    .text("Year 2000");
+
+
+    svg.append("text")
+    .attr("x",290)
+    .attr("y",67)
+    .attr("font-size","12px")
+    .attr("font-weight","bold")
+    .attr("font-family",'Raleway')
+    .style("text-anchor", "left")
+    .text("Year 2010");
+
+
+    svg.append("circle")
+    .attr("cx",115)
+    .attr("cy",63)
+    .style("fill","rgb(247,168,184)")
+    .attr("r",6)
+
+    svg.append("circle")
+    .attr("cx",275)
+    .attr("cy",63)
+    .style("fill","rgb(209,125,149)")
+    .attr("r",6)
 
 
   // Style one of the Y labels bold:
 
   // a hack that works if you can unravel the selections - to style "The World" bold in the axis label, which is the 8th element:
   var allYAxisLabels = d3.selectAll("g.y.axis g.tick text")[0]; // un-nest array
-  d3.select(allYAxisLabels[7]).style("font-weight", "bold");
+  d3.select(allYAxisLabels[0]).style("font-weight", "bold");
     // You could also use tick formatting to get a % sign on each axis tick
 
 }

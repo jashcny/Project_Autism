@@ -2,7 +2,7 @@ queue()
   .defer(d3.json, "data/us-states.json")
   .defer(d3.csv, "data/PrevalenceofAutismandIDforAges3to21.csv")
   .defer(d3.csv, "data/disordertype.csv")
-  .defer(d3.csv, "data/cost.csv")
+  .defer(d3.csv, "data/cost_by_age1.csv")
   .defer(d3.csv, "data/estimated_prevalence_age8ByGender.csv")
   .defer(d3.csv, "data/autism_by_race.csv", reformat)
   .await(ready);

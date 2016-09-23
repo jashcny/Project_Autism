@@ -1,10 +1,10 @@
 
- function smallMultipleBar(data) {
+function smallMultipleBar(data) {
    console.log(data);
 
-   var margin = {top: 60, right: 10, bottom: 50, left: 40},
-       width = 320 - margin.left - margin.right,
-       height = 300 - margin.top - margin.bottom;
+   var margin = {top: 30, right: 5, bottom: 30, left: 18},
+       width = 230 - margin.left - margin.right,
+       height = 190 - margin.top - margin.bottom;
 
    var x = d3.scale.ordinal()
        .rangeRoundBands([0, width], .45);
@@ -59,7 +59,7 @@
          .call(yAxis)
        .append("text")
          .attr("transform", "rotate(-90)")
-         .attr("y", 5)
+         .attr("y", 10)
          .attr("dy", ".45em")
          .attr("font-size",10)
          .style("text-anchor", "end")
@@ -69,11 +69,12 @@
          .attr("class", "caption")
          .attr("text-anchor", "middle")
          .style("pointer-events", "none")
-         .attr("dx",160)
+         .attr("dx",140)
          .attr("font-size",17)
          .attr("dy", -8)
-         .style("text-anchor", "end")
          .attr("font-weight","bold")
+         .style("text-anchor", "end")
+         .style("font-family", 'Raleway')
          .text(function(d) { return d.State;});
 
      svg.selectAll(".bar")
@@ -102,8 +103,8 @@
      .attr("class", "bar")
      .attr("x", function(d) { return x(d.race); })
      .attr("y", function(d) { return y(d.value); })
-     .attr("dy", "-10px")
-     .attr("dx","8.5px")
+     .attr("dy", "-5px")
+     .attr("dx","5px")
      .attr("font-weight","bold")
      .text(function(d) {return d.value;});
 
@@ -115,8 +116,8 @@
        d3.select("#button-wrap2").selectAll("div").on("click", function() {
          var id;
          id = d3.select(this).attr("id");
-         d3.select("#button-wrap2").selectAll("div").classed("active", false);
-         d3.select("#" + id).classed("active", true);
+         d3.select("#button-wrap2").selectAll("div").classed("active1", false);
+         d3.select("#" + id).classed("active1", true);
          return $("#smallMultipleBar1").isotope({
            sortBy: id
          });

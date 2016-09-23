@@ -1,7 +1,7 @@
 function scatterchart(data) {
 
-var fullWidth = 550;
-var fullHeight =450;
+var fullWidth = 600;
+var fullHeight =550;
 
 var margin = {top:50, left:100, right:60, bottom: 70};  //Top, right, bottom, left
 
@@ -40,7 +40,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
         .scale(yScale)
         .orient("left")
-        .ticks(5);
+        .ticks(10);
 
 
 var svg = d3.select("#scatterPlotchart")
@@ -84,7 +84,7 @@ var svg = d3.select("#scatterPlotchart")
       .enter()
       .append("circle")
       .classed("dots",true);
-                                                // fill in the rest of the data, enter, append here.
+  // fill in the rest of the data, enter, append here.
 
   // add a class to the circles - ".dots".
 
@@ -137,24 +137,22 @@ var svg = d3.select("#scatterPlotchart")
     .attr("class", "y axis")
     //.attr("transform", "translate(" + (padding[3]) + ",0)")
     .call( yAxis);
-      // fill in the area of your yaxis function here).
+   // fill in the area of your yaxis function here).
 
-
-                  svg.append("g")
-                  .attr("class", "grid")
-                  .call(make_y_axis()
-                  .tickSize(-width, 0, 0)
-                  .tickFormat("")
-              )
+  svg.append("g")
+  .attr("class", "grid")
+  .call(make_y_axis()
+  .tickSize(-width, 0, 0)
+  .tickFormat(""))
 
   svg.append("text")
   .attr("class", "xlabel")
-  .attr("transform", "translate(" + (margin.left + width / 2) + " ," +
-                     (height + margin.bottom) + ")")
+  .attr("transform", "translate(" + (margin.left + width / 2) + " ," +(height + margin.bottom) + ")")
   .style("text-anchor", "middle")
   .attr("dy", "-20")
   .attr("dx","-85")
   .attr("font-size","15px")
+  .attr("font-family",'Raleway')
   .text("Female");
 
   svg.append("text")
@@ -163,6 +161,7 @@ var svg = d3.select("#scatterPlotchart")
   .attr("x", 20 - (height / 2)) // you may need to adjust
   .attr("dy", "1.3em")
   .attr("font-size","15px")
+  .attr("font-family",'Raleway')
   .style("text-anchor", "middle")
   .text("Male");
 
