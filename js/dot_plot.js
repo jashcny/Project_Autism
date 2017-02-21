@@ -1,7 +1,7 @@
 
 function dot_plot(data) {
 
-var fullwidth = 515,
+var fullwidth = 520,
     fullheight = 410;
 
 // these are the margins around the graph. Axes labels go in margins.
@@ -31,8 +31,9 @@ var yAxis = d3.svg.axis()
 
 var svg = d3.select("#dot")
       .append("svg")
-      .attr("width", fullwidth)
-      .attr("height", fullheight);
+      .attr("viewBox", "0 0 " + fullwidth + " " + fullheight )
+      .attr("preserveAspectRatio", "xMinYMin slice");
+
 
 data.forEach(function(d, i){
       d.difference= (d.ASD_prevalence_in2010 - d.ASD_prevalence_in2000).toFixed(2);
@@ -221,20 +222,18 @@ console.log(top10);
     .call(yAxis);
 
     svg.append("text")
-    .attr("x",20)
+    .attr("x",39)
     .attr("y",35)
     .attr("font-size","17px")
     .attr("font-weight","bold")
-    .attr("font-family",'Raleway')
     .style("text-anchor", "left")
     .text("Top 10 states with the highest ASD prevalence increase rates");
 
     svg.append("text")
     .attr("x",130)
     .attr("y",67)
-    .attr("font-size","12px")
+    .attr("font-size","1.5rem")
     .attr("font-weight","bold")
-    .attr("font-family",'Raleway')
     .style("text-anchor", "left")
     .text("Year 2000");
 
@@ -242,9 +241,8 @@ console.log(top10);
     svg.append("text")
     .attr("x",290)
     .attr("y",67)
-    .attr("font-size","12px")
+    .attr("font-size","1.5rem")
     .attr("font-weight","bold")
-    .attr("font-family",'Raleway')
     .style("text-anchor", "left")
     .text("Year 2010");
 
@@ -260,6 +258,11 @@ console.log(top10);
     .attr("cy",63)
     .style("fill","rgb(209,125,149)")
     .attr("r",6)
+
+    d3.select(window).on('resize', resize);
+
+    function resize() {
+    }
 
 
   // Style one of the Y labels bold:

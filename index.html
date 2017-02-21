@@ -1,203 +1,325 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Autism</title>
-
-  <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.pagepiling.css" />
-	<link rel="stylesheet" type="text/css" href="css/nav.css" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autism</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
-	<ul id="menu">
-		<li data-menuanchor="History" class="active"><a href="#page1">History</a></li>
-		<li data-menuanchor="Prevalence"><a href="#page2">Prevalence</a></li>
-		<li data-menuanchor="page3"><a href="#page3">ASD Type</a></li>
-		<li data-menuanchor="page4"><a href="#page4">Gender</a></li>
-		<li data-menuanchor="page5"><a href="#page5">Race</a></li>
-		<li data-menuanchor="page6"><a href="#page6">Financial Burden</a></li>
-		<li data-menuanchor="page7"><a href="#page7">CDDS Report</a></li>
-		<li data-menuanchor="page8"><a href="#page8">Video Story</a></li>
-	</ul>
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-<!-- Page 1  -->
-	<div id="pagepiling">
-	    <div class="section" id="section1">
-				  <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1sA-85yz8k16TGDkT6A8Fo085W1VyvC8Yp5dJXDEIirM&font=Default&lang=en&initial_zoom=2&height=620' width='85%' height='620' frameborder='0'></iframe>
-			<br />
-	    </div>
+  ga('create', 'UA-91233301-1', 'auto');
+  ga('send', 'pageview');
+</script> -->
 
-<!-- Page 2 -->
-	    <div class="section" id="section2">
-	    	<div class="intro">
-	    		<h1 id="page1Title">The Prevalence of Autistic-spectrum Disorder for individuals ages 3–21 in Year 2000 and Year 2010.</h1>
-					<div id="compare">
-		    	<div  id="map">
-		    	<div id="button-wrap1">
-		    	<div id="ASD_prevalence_in2000" class="button active1 total">Year 2000</div>
-		    	<div id="ASD_prevalence_in2010" class="button total">Year 2010</div>
-		    	</div>
-	      	</div>
-      <div class="chart" id="dot">
-      <div id="tooltipdot">
-			</div>
-			</div>
-		 <p id="top100"><span style="font-size:16px;">Hover</span> the dash line to get the difference between 2000-2010</p>
+<header class="main_h">
+
+    <div class="row">
+        <a class="logo" href="#">Autism</a>
+
+        <!-- <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div> -->
+
+        <nav>
+            <ul>
+                <li><a href=".sec01">History</a></li>
+                <li><a href=".sec02">Prevalence</a></li>
+                <li><a href=".sec03">ASD Type</a></li>
+                <li><a href=".sec04">Gender</a></li>
+                <li><a href=".sec05">Race</a></li>
+                <li><a href=".sec06">Financial Burden</a></li>
+                <li><a href=".sec07">Video Story</a></li>
+
+            </ul>
+        </nav>
+
+    </div> <!-- / row -->
+
+</header>
+
+<!-- <div class="hero">
+</div> -->
+
+
+    <h1 class="sec01"></h1>
+		  <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1sA-85yz8k16TGDkT6A8Fo085W1VyvC8Yp5dJXDEIirM&font=Default&lang=en&initial_zoom=2&height=620' width='100%' height='620' frameborder='0'></iframe>
+
+                                <!-- Part Two -->
+
+    <div class="im-centered">
+      <div class="row">
+    	   <h1 class="sec02">The Prevalence of ASD ages 3–21 in Year 2000-2010</h1>
       </div>
-	    		<p id="mapintro"> <span style='color:rgb(140,53,89); font-size:25px;'>40</span> years ago, only 1 out of every <span style='color:rgb(140,53,89); font-size:25px;'>2,000</span> children had autism. <span style='color:rgb(140,53,89); font-size:25px;'>Today</span>, 1 in <span style='color:rgb(140,53,89); font-size:25px;'>68</span> children has been identified with autism spectrum disorder(ASD) in US. This map shows that the prevalence of autism and related spectrum is significant increase from 2000 to 2010.In the dot plot, it is clearly known that<span style='color:rgb(140,53,89); font-size:25px;font-weight:bold'> Minnesota</span> and <span style='color:rgb(140,53,89); font-size:25px;font-weight:bold'>Massachusetts</span> have seen the largest increases in growth rate of the prevalence in US. </p>
-					<p id="source1">Source:American journal of medical genetics. </p>
-	    	</div>
-	    </div>
+    </div>
 
-<!-- Page 3 -->
-	<div class="section" id="section3">
+    <div class="im-centered">
+      <div class="row">
+    		<p> 40 years ago, only 1 out of every children had autism. Today, 1 in 68 children has been identified with autism spectrum disorder(ASD) in US. This map shows that the prevalence of autism and related spectrum is significant increase from 2000 to 2010. </p>
+      </div>
+    </div>
 
-
-	<div id="pieintro">
-	<h1 id="pieTitle">Number and proportion within each diagnostic subtype in 11 states</h1>
-	<div class="chart" id="pie"></div>
-
-	<div id="pietext">
-	<h2 id="pieTitle2">Type of Autism</h2>
-	<p>Autism spectrum disorder (ASD) and autism are collectively referred to as a group of neurodevelopment disorder. These disorders are characterized by varying degrees of symptoms. Parents are most likely to notice the obvious signs between 2 and 3 years of their children’s age.
- </p>
-	<h3>Autistic Disorder</h3>
-		<h4>(what we well known as “Autism”)</h4>
-	<p>Symptoms (Severe): language delays, impaired social interaction, restricted and repetitive behavior, intellectual disability.</p>
-
-	<h3>Asperger Syndrome</h3>
-	<p>Symptoms (Milder): impaired social interaction, unusual behaviors and interests, not problems with social interaction.</p>
-
-	<h3>PDD-NOS</h3>
-	<h4>(Pervasive Developmental Disorder- Not otherwise Specified)</h4>
-
-	<p>Symptoms (Mildest): Not meet the full set of criteria for autism or Asperger syndrome, only social and communication challenge.</p>
-		</div>
-	</div>
-	<p id="source2">Source: Centers for Disease Control and Prevention. </p>
-	    </div>
-
-<!--page 4  -->
-	    <div class="section" id="section4">
-	    	<div class="intro">
-<div id="scatterPlotchart"></div>
-<div id="scatterintro">
-<p>Studies over decades have suggested that males are more likely than women to suffer from <span style='color:rgb(174,36,40); font-size:25px;'>neurodevelopment disorders</span> like ASD. In general, autism are <span style='color:rgb(174,36,40); font-size:25px;'>five</span> times more common among boys than girls.</p>
-<p>A study which published in the American Journal of Human Genetics attribute this disparity to what is called the “<span style='color:rgb(174,36,40); font-size:25px;'>female protective model</span>.” It means that girls are more able to put up with <span style='color:rgb(174,36,40); font-size:25px;'>harmful genetic mutations</span> and therefore they need larger amounts of them than their counterparts to be diagnosed with a developmental disorder.</p>
-<p>In addition, even in the same level of ASD, girls are better at dealing with social relationships in order to get along with their peers.</p>
-<p>But it is precisely because girls sets higher genetic mutations, by the time they are diagnosed with ASD, it is probably in their <span style='color:rgb(174,36,40); font-size:25px;'>severe stages</span> of the spectrum.</p>
-</div>
-<p id="source3">Source: Centers for Disease Control and Prevention</p>
-<p id="anno1">Annotation: Estimated prevalence of autism spectrum disorder among 1,000 children aged 8 years, by sex.</p>
-
-
-<div id="tooltips" class="tool3">
-		<h3 class="area"></h3>
-		<div class="title">Female</div>
-		<div class="vall"></div>
-		<div class="danwei">(Prevalence (95% CI))</div>
-</div>
-
-<div id="tooltipScatter" class="tool3">
-		<h3 class="area"></h3>
-		<div class="scattertitle FemaleNo">Female</div>
-		<div class="vall FemaleNo"></div><br/>
-		<div class="danwei FemaleNo">(Prevalence (95% CI))</div>
-		<div class="scattertitle MaleNo">Male</div>
-		<div class="vall MaleNo"></div><br/>
-		<div class="danwei MaleNo">(Prevalence (95% CI))</div>
-		<div class="scattertitle RatioNo">Ratio</div>
-		<div class="vall RatioNo"></div><br/>
-		<div class="danwei RatioNo">(Male-to-female prevalence ratio)</div>
-</div>
-
-	    	</div>
-
-	    </div>
-
-<!-- page 5 -->
-<div class="section" id="section5">
-  <div id="button-wrap2">
-  <div id="total" class="button  race">TOTAL</div>
-  <div id="white" class="button race">WHITE</div>
-  <div id="black" class="button race">BLACK</div>
-  <div id="hispanic" class="button race">HISPANIC</div>
-  <div id="api" class="button race">API</div>
-  <div id="State" class="button active1 race">STATE</div>
+  <div class="im-centered">
+    <div class="row">
+      <div class="col-xs-offset-2 col-sm-offset-2 col-xs-10 col-sm-10 col-md-offset-2 col-lg-offset-2 col-md-10 col-lg-10 buttonG">
+        <div id="ASD_prevalence_in2000" class="button active1 total">Year 2000</div>
+      	<div id="ASD_prevalence_in2010" class="button total">Year 2010</div>
+      </div>
+      <div class="col-xs-offset-1 col-sm-offset-1 col-xs-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-md-9 col-lg-9" id="map"></div>
+    </div>
   </div>
-	<div class="chart" id="smallMultipleBar1"></div>
-	<p id="source4">Source: Centers for Disease Control and Prevention</p>
-</div>
 
-<!-- Page 6 -->
-<div class="section" id="section6">
-	<div id="explain">
-	<p>The <span style='color:rgb(174,36,40); font-size:28px;'>financial</span> and <span style='color:rgb(174,36,40); font-size:30px;'>psychological</span> burden in the households of autism children is incredibly stressful. According to a research funded by Autism Speaks, families with autism children involves <span style='color:rgb(174,36,40); font-size:28px;'>intellectual disability</span> tend to spend <span style='color:rgb(174,36,40); font-size:33px;'>2.4</span> million dollars for an individual’s lifetime and <span style='color:rgb(174,36,40); font-size:33px;'>1.4</span> million dollars when it does not.</p>
-	<p><span style='color:rgb(174,36,40); font-size:28px;'>Direct medical</span>, <span style='color:rgb(174,36,40); font-size:28px;'>direct non-medical</span> and <span style='color:rgb(174,36,40); font-size:28px;'>indirect productivity</span> costs are three main expenditure for ASD. Compared with many other disease, such as heart disease and cancer that are limited to medical and productivity cost, ASD faces crippling costs for <span style='color:rgb(174,36,40); font-size:28px;'>direct non-medical</span> which include educational and transportation expanse; behavioral, occupational, speech and related therapy.</p>
-	<p><span style='color:rgb(174,36,40); font-size:33px;'>California</span> is the most populous state with a variety of racial and ethnic groups in the United States. The following charts show the average spending by California's Department of Developmental Services (CDDS) for Persons with Autism across different age groups in year 2012–2013. To some degree, it can be representative for the United States. But we also should be alert that the data are based on people who have received services from CDDS, for those who are not qualified for CDDS or run out-of-pocket for therapies are lack of consideration. </p>
-	</div>
-</div>
-
-<!-- Page 7 -->
-<div class="section" id="section7">
-<h2 id=titleCost>The annual average spending by California's Department of Developmental Services for Persons with Autism</h2>
-	<p id="stackText">From the chart we can know that the total cost of Community Care Facilities rank the highest among all other categories. It started below <span style='color:rgb(174,36,40); font-size:25px;'>$40,000</span> for ages 3–6, peaked for ages 7–11 and 12–16 over <span style='color:rgb(174,36,40); font-size:25px;'>$50,000</span> and then gradually sunk to the interval of <span style='color:rgb(174,36,40); font-size:25px;'>$30,000</span> and <span style='color:rgb(174,36,40); font-size:25px;'>$40,000</span> for adults, and finally went back to <span style='color:rgb(174,36,40); font-size:25px;'>$44,000</span> and <span style='color:rgb(174,36,40); font-size:25px;'>$46,000</span> for elders. It is also clearly found that the data of the Day Care Programs and Support Services were closely related to age patterns.</p>
-<div id="vis1">
-	<div id="form">
-			<label><input type="radio" name="mode" value="grouped" checked> Grouped</label>
-			<label><input type="radio" name="mode" value="stacked"> Stacked</label>
-	</div>
-</div>
-<p id="source5">Source:Spending by California’s Department of Developmental Services for Persons with Autism across Demographic and Expenditure Categories</p>
-</div>
-
-<!-- Page 7 -->
-<div class="section" id="section8">
-<div id=videoinline>
-<iframe id="video" src="https://www.youtube.com/embed/quTRG4J5NCg" frameborder="0" allowfullscreen></iframe>
-<p id="videIntro">Jessica is a high school student who devote most of her lives to kids with special needs. She joined best buddies, an non-profit organization that aims to help people with intellectual and developmental disabilities. One of her buddy is Ryan, an 17-year-old autistic boy. They spend lunch time together at school and usually hangout outside on weekend. By watching this small video story, we can gradually feel the warmth and sweet from an autistic boy.</p>
-</div>
-
-<ul id="find">
-				 <li><a href="http://www.hanhuang.me"><i class="fa fa-home fa-3x" ></i></a></li>
-				 <li><a href="https://twitter.com/Han_Miami"><i class="fa fa-twitter fa-3x"></i></a></li>
-				 <li><a href="https://github.com/jashcny"><i class="fa fa-github fa-3x"></i></a></li>
-				 <li><a href="https://www.linkedin.com/in/han-huang-74778a105"><i class="fa fa-linkedin-square fa-3x"></i></a></li>
-				 <li><a href="mailto:hxh277@miami.edu"><i class="fa fa-envelope fa-3x"></i></a></li>
- </ul>
- <div id="footerEnd">
-<p>Data-Driven story created by Han Huang  <span style='padding-left:40px;'>  Instructor: Lynn Cherny</p>
- </div>
-</div>
-
-</div>
+  <div class="im-centered">
+    <div class="row">
+      <p>In the dot plot, it is clearly known that Minnesota and Massachusetts have seen the largest increases in growth rate of the prevalence in US.</p>
+    </div>
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-1 col-xs-10 col-sm-10 col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8" id="dot"></div>
+    </div>
+    <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sourceAJ">(Source:American journal of medical genetics)</p>
+  </div>
 
 
+                                                     <!-- Part Two -->
+
+
+  <div class="im-centered">
+    <div class="row sec03">
+      <hr>
+      <h1 class="col-xs-12 col-sm-12 col-md-offset-4 col-md-6 col-lg-offset-4 col-lg-6">Type of Autism</h1>
+        <p class="col-sm-12 col-xs-12 col-md-12 col-lg-12">Autism spectrum disorder (ASD) and autism are collectively referred to as a group of neurodevelopment disorder. There are three main sub-type of ASD, which are characterized by varying degrees of symptoms. Parents are most likely to notice the obvious signs between 2 and 3 years of their children’s age.</p>
+    </div>
+
+
+    <div class="row" id="typeR">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+        <hr>
+          <h3 >Autistic Disorder</h3>
+            <h4 >(what we well known as “Autism”)</h4>
+              <p >Symptoms (Severe): language delays, impaired social interaction, restricted and repetitive behavior, intellectual disability.</p>
+      </div>
+
+      <div class="col-sm-12 col-xs-12 col-md-offset-1 col-md-3 col-lg-3">
+        <hr>
+          <h3>Asperger Syndrome</h3>
+            <p >Symptoms (Milder): impaired social interaction, unusual behaviors and interests, not problems with social interaction.</p>
+      </div>
+
+      <div class="col-sm-12 col-xs-12 col-md-4 col-md-offset-1 col-lg-3">
+        <hr>
+         <h3>PDD-NOS</h3>
+          <h4 >(Pervasive Developmental Disorder- Not otherwise Specified)</h4>
+         	  <p >Symptoms (Mildest): Not meet the full set of criteria for autism or Asperger syndrome, only social and communication challenge.</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- <div class="row">
+        <h3 class="col-sm-12 col-sm-12 col-md-4 col-lg-4">Autistic Disorder</h3>
+          <h4 class="col-sm-12 col-xs-12 col-md-4 col-lg-4" id="well">(what we well known as “Autism”)</h4>
+        	 <p class="col-sm-12 col-xs-12 col-md-4 col-lg-4">Symptoms (Severe): language delays, impaired social interaction, restricted and repetitive behavior, intellectual disability.</p>
+    </div>
+
+    <div class="row">
+        <h3 class="col-sm-12 col-sm-12 col-md-4 col-lg-4" >Asperger Syndrome</h3>
+        	<p class="col-sm-12 col-xs-12 col-md-4 col-lg-4">Symptoms (Milder): impaired social interaction, unusual behaviors and interests, not problems with social interaction.</p>
+    </div>
+
+
+    <div class="row">
+
+        <h3 class="col-sm-12 col-sm-12 col-md-4 col-lg-4" id="nos">PDD-NOS</h3>
+         <h4 class="col-sm-12 col-xs-12 col-md-4 col-lg-4" id="ppd">(Pervasive Developmental Disorder- Not otherwise Specified)</h4>
+        	<p class="col-sm-12 col-xs-12 col-md-4 col-lg-4">Symptoms (Mildest): Not meet the full set of criteria for autism or Asperger syndrome, only social and communication challenge.</p>
+    </div> -->
+
+    <div class="im-centered">
+      <div class="row">
+        <p >This multiple pie charts illustrate the number and proportion within each diagnostic subtype in 11 states in 2012.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="pie"></div>
+    	</div>
+
+      <div class="row sourceG">
+      	<p  class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> (Source: Centers for Disease Control and Prevention)</p>
+      </div>
+    </div>
+
+
+                              <!-- Part Three -->
+    <div class="im-centered">
+      <hr>
+      <div class="row sec04">
+        <h1  class="col-xs-12 col-sm-12 col-md-offset-5 col-md-6 col-lg-offset-5 col-lg-6">Gender</h1>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <p>Studies over decades have suggested that males are more likely than women to suffer from neurodevelopment disorders like ASD. The following scatterplot shows the estimated prevalence of autism spectrum disorder among 1,000 children aged 8 years by sex in 11 states in 2012. We can find out that autism are generally 5 times more common among boys than girls in .</p>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
+          <div id="scatterPlotchart"></div>
+            <div id="tooltips" class="tool3">
+               <h3 class="area"></h3>
+               <div class="title">Female</div>
+               <div class="vall"></div>
+               <div class="danwei">(Prevalence (95% CI))</div>
+            </div>
+          </div>
+
+          <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12">
+            <p>A study which published in the American Journal of Human Genetics attributed this disparity to what is called the “female protective model.” It means that girls are more able to put up with harmful genetic mutations and therefore they need larger amounts of them than their male counterparts. Even in the same level of ASD, girls are better at dealing with social relationships in order to get along with their peers.</p>
+
+            <p>However, since girls sets higher genetic mutations, it is probably in their severe stages of the spectrum by the time they are diagnosed with ASD.</p>
+          </div>
+      </div>
+
+      <div class="row sourceC">
+        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >(Source: Centers for Disease Control and Prevention)</p>
+      </div>
+    </div>
+
+    <div id="tooltipScatter" class="tool3">
+    		<h3 class="area"></h3>
+    		<div class="scattertitle FemaleNo">Female</div>
+    		<div class="vall FemaleNo"></div><br/>
+    		<div class="danwei FemaleNo">(Prevalence (95% CI))</div>
+    		<div class="scattertitle MaleNo">Male</div>
+    		<div class="vall MaleNo"></div><br/>
+    		<div class="danwei MaleNo">(Prevalence (95% CI))</div>
+    		<div class="scattertitle RatioNo">Ratio</div>
+    		<div class="vall RatioNo"></div><br/>
+    		<div class="danwei RatioNo">(Male-to-female prevalence ratio)</div>
+    </div>
+                                            <!-- Part Four -->
+
+
+    <div class="im-centered">
+      <hr>
+      <div class="row sec05">
+       <h1  class="col-xs-12 col-sm-12 col-md-offset-5 col-md-6 col-lg-offset-5 col-lg-6">Race</h1>
+        <p class="col-xs-10 col-sm-10 col-md-12 col-lg-12">The occurrence of ASD happens everywhere in the world, regardless of race and ethnic groups. The bar charts show the estimated prevalence of ASD among 1,000 children aged 8 years by different race and states. We may find out the prevalence was generally lower among Hispanic children compared with non-Hispanic children at a glance. Is it true that hispanic children are unlikely to have ASD than their counterparts? In fact, all of the data here are based on ASD surveillance,  which particularly collected in public schools. Therefore, a portion of nonwhite children with ASD are impossible to be identified and evaluated. </p>
+          <div class="col-xs-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-md-10 col-lg-10" id="button-wrap2">
+            <div id="total" class="button race">TOTAL</div>
+            <div id="white" class="button race">WHITE</div>
+            <div id="black" class="button race">BLACK</div>
+            <div id="hispanic" class="button race">HISPANIC</div>
+            <div id="api" class="button race">API</div>
+            <div id="State" class="button active1 race">STATE</div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="smallMultipleBar1"></div>
+      </div>
+
+      <div class="row">
+      	<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="CDCP">(Source: Centers for Disease Control and Prevention)</p>
+      </div>
+    </div>
+
+    <div class="im-centered">
+      <div class = "row sec06">
+        <hr>
+          <h1 class="col-xs-12 col-sm-12 col-md-offset-4 col-md-8 col-lg-offset-4 col-lg-8">About Expense</h1>
+          <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" id="foL">
+      	   <p>The financial and psychological burden in the households of autism children is incredibly stressful. According to a research funded by Autism Speaks, families with autism children involve intellectual disability tend to spend 2.4 million dollars for an individual’s lifetime and 1.4 million dollars when it does not.</p>
+      	    <p>Direct medical, direct non-medical and indirect productivity costs are three main expenditure for ASD. Compared with many other disease, such as heart disease and cancer that are limited to medical and productivity cost, ASD faces crippling costs for direct non-medical which includes educational and transportation expanse; behavioral, occupational, speech and related therapy.</p>
+      	    <p>California is the most populous state with a variety of racial and ethnic groups in the United States. The following charts show the average spending by California's Department of Developmental Services (CDDS) for Persons with Autism across different age groups in year 2012–2013. To some degree, it can be representative for the United States. But we also should be alert that the data are based on people who have received services from CDDS, for those who are not qualified for CDDS or run out-of-pocket for therapies are lack of consideration. </p>
+      	</div>
+      </div>
+    </div>
+
+    <div class="im-centered">
+     <hr>
+      <div class="row">
+        <h1 class="col-xs-12 col-sm-12 col-md-offset-4 col-md-8 col-lg-offset-4 col-lg-8" >California</h1>
+      </div>
+
+      <div class="row">
+        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Here below is the annual average spending by California's Department of Developmental Services for Persons with Autism. From the chart we can know that the total cost of Community Care Facilities rank the highest among all other categories. It started below $40,000 for ages 3–6, peaked for ages 7–11 and 12–16 over $50,000 and then gradually sunk to the interval of $30,000 and $40,000 for adults, and finally went back to $44,000 and $46,000 for elders. It is also clearly that the data of the Day Care Programs and Support Services are closely related to age patterns.</p>
+      </div>
+
+      <div class = "row">
+        <div class="col-xs-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-md-10 col-lg-10" id="form">
+        		<label><input type="radio" name="mode" value="grouped" checked> Grouped</label>
+        		<label><input type="radio" name="mode" value="stacked"> Stacked</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="vis1"> </div>
+
+      </div>
+
+      <div class = "row sourceSta">
+        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">(Source:Spending by California’s Department of Developmental Services for Persons with Autism across Demographic and Expenditure Categories)</p>
+      </div>
+    </div>
+
+
+
+    <div class="im-centered">
+      <hr>
+      <div class="row sec07">
+        <h1 class="col-xs-12 col-sm-12 col-md-offset-3 col-md-8 col-lg-offset-3 col-lg-8" >Living with Austim</h1>
+      </div>
+
+              <!-- This is the video  -->
+      <div class="row">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/velVhYs1png" frameborder="0" allowfullscreen></iframe>
+          </div>
+      </div>
+          <div class="row">
+            <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Jessica is a high school student who devotes most of her lives to kids with special needs. She joined best buddies, an non-profit organization that aims to help people with intellectual and developmental disabilities. One of her buddy is Ryan, an 17-year-old autistic boy. They spend lunch time together at school and usually hangout outside on weekend. By watching this small video story, we can gradually feel the warmth and sweet from an autistic boy.</p>
+          </div>
+
+      <div class="row">
+        <ul class="find">
+  				 <li class="col-xs-3 col-sm-3 col-md-offset-2 col-md-2 col-lg-offset-2  col-lg-2"><a href="http://www.hanhuang.me"><i class="fa fa-home fa-3x" ></i></a></li>
+  				 <li  class="col-xs-3 col-sm-3 col-md-2 col-lg-2"><a href="https://github.com/jashcny"><i class="fa fa-github fa-3x"></i></a></li>
+  				 <li  class="col-xs-3 col-sm-3 col-md-2 col-lg-2"><a href="https://www.linkedin.com/in/han-huang-74778a105"><i class="fa fa-linkedin-square fa-3x"></i></a></li>
+  				 <li  class="col-xs-3 col-sm-3 col-md-2 col-lg-2"><a href="mailto:hxh277@miami.edu"><i class="fa fa-envelope fa-3x"></i></a></li>
+        </ul>
+      </div>
+
+      <div class="row about">
+         <p class="col-xs-10 col-sm-10 col-md-6  col-lg-6 col-md-offset-1 col-lg-offset-1">Data-Driven story created by Han Huang </p>
+         <p class="col-xs-10 col-sm-10 col-md-4 col-lg-4  ">Instructor: Lynn Cherny</p>
+        </div>
+    </div>
 
 
 
 
 
-<!--  -->
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery.pagepiling.min.js"></script>
-	<script type="text/javascript" src="js/plugin.js"></script>
-	<script type="text/javascript" src="js/jquery.stickyNavbar.js"></script>
-	<script src="js/wow.min.js"></script>
+	<!-- <script src="js/wow.min.js"></script> -->
 
 
-
+    <script src="js/scrollbar.js"></script>
 	  <!-- <script type="text/javascript" src="js/mfreeman_scroller.js"></script> -->
 	  <!-- <script type="text/javascript" src="js/scroller_settings3.js"></script> -->
 	  <script src="js/queue.v1.min.js"></script>
@@ -210,8 +332,6 @@
 	  <script src="js/dot_plot.js"></script>
 	  <script src="js/mapforState.js"></script>
 	  <script src="js/queue_loading.js"></script>
-
-
 
 
 </body>

@@ -4,8 +4,12 @@
 function piechart(data) {
 
 
-var m = 15,
-    r = 70;
+var m = 16,
+    r = 48;
+
+var fullWidth = (r + m) * 2;
+var fullHeight = (r + m) * 2;
+
 
 var color = d3.scale.ordinal()
               // .range(["#FEEDCF","#FDC273","#FB7841"])
@@ -34,27 +38,7 @@ var disorders = d3.nest()
 
 console.log(disorders);
 
-  // Insert an svg element (with margin) for each airport in our dataset. A
-  // child g element translates the origin to the pie center.
-var svg = d3.select("#pie").selectAll("div")
-            .data(disorders)
-            .enter().append("div")
-            .style("display", "inline-block")
-            .style("width", (r + m) * 2 + "px")
-            .style("height", (r + m) * 2 + "px")
-            .append("svg")
-            .attr("width", (r + m) * 2)
-            .attr("height", (r + m) * 2)
-            .append("g")
-            .attr("transform", "translate(" + (r + m) + "," + (r + m) + ")");
 
-  // Add a label for the state. The `key` comes from the nest operator.
-        svg.append("text")
-           .attr("dy", ".35em")
-           .attr("text-anchor", "middle")
-           .attr("font-size","10px")
-           .attr("font-family",'Raleway')
-           .text(function(d) { return d.key; });
 
 var radius = 100,
     padding = 10;
@@ -65,27 +49,49 @@ var disorderType_reversed = disorderType.slice().reverse();
 
 var legend = d3.select("#pie").append("svg")
                .attr("class", "pieLegend")
-               .attr("width", radius *3)
+               .attr("width", radius *8)
                .attr("font-size","16px")
-               .attr("height", radius )
+               .attr("height", radius/2.5 )
                .selectAll("g")
                .data(disorderType_reversed)
                .enter().append("g")
-               .attr("transform", function(d, i) { return "translate(40," + i * 30 + ")"; });
+               .attr("transform", function(d,i) {
+               xOff = (i % 3) * 250
+               yOff = Math.floor(i  / 3)
+               return "translate(" + xOff/1.3 + "," + yOff/1.3 + ")"});
 
-             legend.append("rect")
-                   .attr("width", 18)
-                   .attr("height", 18)
-                   .style("fill", color);
+ legend.append("rect")
+       .attr("width", 18)
+       .attr("height", 18)
+       .style("fill", color);
 
-             legend.append("text")
-                   .attr("x", 24)
-                   .attr("y", 9)
-                   .attr("dy", ".35em")
-                   .attr("font-size","14px")
-                   .attr("font-family",'Raleway')
-                   .text(function(d) { return d; });
+ legend.append("text")
+       .attr("x", 24)
+       .attr("y", 9)
+       .attr("dy", ".35em")
+       .attr("font-size","14px")
+       .text(function(d) { return d; });
 
+       // Insert an svg element (with margin) for each airport in our dataset. A
+       // child g element translates the origin to the pie center.
+     var svg = d3.select("#pie").selectAll("div")
+                 .data(disorders)
+                 .enter().append("div")
+                 .style("display", "inline-block")
+                 .style("width", (r + m) * 2 + "px")
+                 .style("height", (r + m) * 2 + "px")
+                 .append("svg")
+                 .attr("viewBox", "0 0 " + fullWidth + " " + fullHeight)
+                 .attr("preserveAspectRatio", "xMinYMin slice")
+                 .append("g")
+                 .attr("transform", "translate(" + (r ) + "," + (r + m) + ")");
+
+       // Add a label for the state. The `key` comes from the nest operator.
+             svg.append("text")
+                .attr("y", "4.2em")
+                .attr("text-anchor", "middle")
+                .attr("font-size","14px")
+                .text(function(d) { return d.key; });
 
   // Pass the nested per-state values to the pie layout. The layout computes
   // the angles for each arc. Another g element will hold the arc and its label.
@@ -94,13 +100,15 @@ var g = svg.selectAll("g")
            .enter().append("g");
 
 
+
+
   // Add a colored arc path, with a mouseover showing the number.
-          g.append("path")
-           .attr("d", arc)
-           .style("fill", function(d) { return color(d.data.subdisorder); })
-           .on("mouseover", mouseover)
-           .on("mousemove", mousemove)
-           .on("mouseout", mouseout);
+  g.append("path")
+   .attr("d", arc)
+   .style("fill", function(d) { return color(d.data.subdisorder); })
+   .on("mouseover", mouseover)
+   .on("mousemove", mousemove)
+   .on("mouseout", mouseout);
 
 function mouseover(d) {
          d3.select(this)
@@ -126,4 +134,8 @@ function mouseout(d) {
           .style("stroke-width", null);
         tooltip2.style("display", "none");
       }  // this sets it to invisible!
+
+      d3.select(window).on('resize', resize);
+            function resize() {
+            }
 }

@@ -2,8 +2,8 @@
 function smallMultipleBar(data) {
    console.log(data);
 
-   var margin = {top: 30, right: 5, bottom: 30, left: 18},
-       width = 230 - margin.left - margin.right,
+   var margin = {top: 30, right: 5, bottom: 30, left: 28},
+       width = 190 - margin.left - margin.right,
        height = 190 - margin.top - margin.bottom;
 
    var x = d3.scale.ordinal()
@@ -60,7 +60,7 @@ function smallMultipleBar(data) {
        .append("text")
          .attr("transform", "rotate(-90)")
          .attr("y", 10)
-         .attr("dy", ".45em")
+         .attr("dy", "-.45em")
          .attr("font-size",10)
          .style("text-anchor", "end")
          .text("Percent");
@@ -69,7 +69,7 @@ function smallMultipleBar(data) {
          .attr("class", "caption")
          .attr("text-anchor", "middle")
          .style("pointer-events", "none")
-         .attr("dx",140)
+         .attr("x",110)
          .attr("font-size",17)
          .attr("dy", -8)
          .attr("font-weight","bold")

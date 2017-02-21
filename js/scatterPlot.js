@@ -1,7 +1,7 @@
 function scatterchart(data) {
 
 var fullWidth = 600;
-var fullHeight =550;
+var fullHeight =520;
 
 var margin = {top:50, left:100, right:60, bottom: 70};  //Top, right, bottom, left
 
@@ -45,8 +45,8 @@ var yAxis = d3.svg.axis()
 
 var svg = d3.select("#scatterPlotchart")
       .append("svg")
-      .attr("width", fullWidth)
-      .attr("height", fullHeight)
+      .attr("viewBox", "0 0 "+ fullWidth +" " + fullHeight)
+      .attr("preserveAspectRatio","xMinYMin slice")
       .attr("class","scatterPlot")
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -104,20 +104,20 @@ var svg = d3.select("#scatterPlotchart")
     .on("mouseout", mouseout);	// add a fill rule with a special case for one of the countries
 
 
-    function make_x_axis() {
-              return d3.svg.axis()
-                  .scale(xScale)
-                  .orient("bottom")
-                  .ticks(5)
+  function make_x_axis() {
+            return d3.svg.axis()
+                .scale(xScale)
+                .orient("bottom")
+                .ticks(5)
+        }
+
+
+  function make_y_axis() {
+          return d3.svg.axis()
+              .scale(yScale)
+              .orient("left")
+              .ticks(5)
           }
-
-
-          function make_y_axis() {
-                    return d3.svg.axis()
-                        .scale(yScale)
-                        .orient("left")
-                        .ticks(5)
-                }
   // fix these translates so they use your margin and height width as needed
   svg.append("g")
     .attr("class", "x axis")
@@ -151,8 +151,6 @@ var svg = d3.select("#scatterPlotchart")
   .style("text-anchor", "middle")
   .attr("dy", "-20")
   .attr("dx","-85")
-  .attr("font-size","15px")
-  .attr("font-family",'Raleway')
   .text("Female");
 
   svg.append("text")
@@ -161,10 +159,12 @@ var svg = d3.select("#scatterPlotchart")
   .attr("x", 20 - (height / 2)) // you may need to adjust
   .attr("dy", "1.3em")
   .attr("font-size","15px")
-  .attr("font-family",'Raleway')
   .style("text-anchor", "middle")
   .text("Male");
 
+  d3.select(window).on("resize",resize);
+  function resize() {
+  }
 
 
 

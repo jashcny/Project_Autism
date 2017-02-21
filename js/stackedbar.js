@@ -5,9 +5,10 @@ function stackedbar(data) {
 var stack = d3.layout.stack();
 var currentMode = "grouped";
 
-var fullwidth = 1300, fullheight = 520;
+var fullwidth = 1300,
+    fullheight = 520;
 
-var margin = {top: 10, right: 100, bottom: 100, left: 60},
+var margin = {top: 10, right: 100, bottom: 100, left: 55},
     width = fullwidth - margin.left - margin.right,
     height = fullheight - margin.top - margin.bottom;
 
@@ -24,23 +25,23 @@ var color = d3.scale.linear()
 var tooltip = d3.select("body").append("div").attr("class", "tooltip5");
 
 var xAxis = d3.svg.axis()
-    .scale(x)
-    .tickSize(0)
-    .tickPadding(6)
-    .orient("bottom");
+            .scale(x)
+            .tickSize(0)
+            .tickPadding(6)
+            .orient("bottom");
 
 var yAxis = d3.svg.axis()
-        .scale(y)
-        .ticks(10)
-        .outerTickSize([0])
-        .innerTickSize([0])
-        .orient("left");
+            .scale(y)
+            .ticks(10)
+            .outerTickSize([0])
+            .innerTickSize([0])
+            .orient("left");
 
 var svg = d3.select("#vis1").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("viewBox", "0 0 " + 1200 + " " + fullheight )
+            .attr("preserveAspectRatio", "xMinYMin slice")
+            .append("g")
+            .attr("transform", "translate(" + margin.left+ "," + margin.top + ")");
 
 var layerCount; // "layers"
 
@@ -93,10 +94,10 @@ var layerCount; // "layers"
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
       .selectAll("text")
-        .attr("dy", "1em")
-        .attr("dx", "1em")
-        .attr("transform", "rotate(-15)")
-        .style("text-anchor", "end");  // rotating the labels on the countries a bit
+      .attr("dy", "1em")
+      .attr("dx", "1em")
+      .attr("transform", "rotate(-15)")
+      .style("text-anchor", "end");  // rotating the labels on the countries a bit
 
   svg.append("g")
       .attr("class", "y axis")
@@ -107,16 +108,16 @@ var layerCount; // "layers"
       .attr("dy", ".5em")
       .style("text-anchor", "end");
 
-      svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 1)
-        .attr("dx",'-1em')
-        .attr("dy", "2em")
-        .style("text-anchor", "middle")
-        .text("Dollar");
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 1)
+    .attr("dx",'-1em')
+    .attr("dy", "2em")
+    .style("text-anchor", "middle")
+    .text("Dollar");
 
   d3.selectAll("input").on("change", change);
 
@@ -139,6 +140,12 @@ var layerCount; // "layers"
       transitionStacked();
     }
   }
+
+  d3.select(window).on('resize', resize);
+
+  function resize() {
+  }
+
 
   function transitionGrouped() {
     y.domain([0, yGroupMax]);
@@ -179,22 +186,21 @@ var layerCount; // "layers"
 
     var legend = svg.selectAll(".legend")
         .data(agees) // make sure your labels are in the right order -- if not, use .reverse() here.
-      .enter().append("g")
+        .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
     legend.append("rect")
-        .attr("x", width-adjustX)
+        .attr("x", width-adjustX-49)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function(d, i) {return color(i)});
 
     legend.append("text")
-        .attr("x", width-adjustX + 24)
+        .attr("x", width-adjustX-24 )
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "start")
-        .style("font-family", 'Raleway')
         .text(function(d, i) { return agees[i]});
   }
 

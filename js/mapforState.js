@@ -1,6 +1,3 @@
-
-
-
 function mapforState(json, states) {
 var width = 800;
 var height = 500;
@@ -22,8 +19,8 @@ var stateColor = d3.scale.linear().range(["rgb(255,224,230)","rgb(140,53,89)"]).
 //Create SVG element and append map to the SVG
 var svg = d3.select("#map")
           .append("svg")
-          .attr("width", width)
-          .attr("height", height);
+          .attr("viewBox", "0 0 " + width + " " + height )
+          .attr("preserveAspectRatio", "xMinYMin slice");
 
 
 var buttonYear = "ASD_prevalence_in2000";
@@ -63,6 +60,10 @@ stateColor.domain(d3.extent(states, function(s) {return +s[buttonYear];}));
   var button = d3.selectAll(".button.total")
         .on("click", redraw);
 
+  d3.select(window).on('resize', resize);
+
+  function resize() {
+  }
 
 
   // Bind the data to the SVG and create one path per GeoJSON feature
@@ -87,7 +88,7 @@ function mouseover(d) {
   d3.select(this)
     .transition()
     .style("stroke", "white")
-    .style("stroke-width", "2.5");
+    .style("stroke-width", "3");
 
   d3.select(this).moveToFront();
 
@@ -118,8 +119,7 @@ var linear = stateColor;
 
 svg.append("g")
 .attr("class", "legendLinear")
-.attr("font-size","12px")
-.attr("font-family",'Raleway')
+.attr("font-size","2.3rem")
 .attr("transform", "translate(560, 5)");
 
 
