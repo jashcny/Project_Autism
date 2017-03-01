@@ -69,6 +69,7 @@ nav ul {
   overflow: hidden;
   text-align: right;
   float: right;
+  margin-left: -5px;
 }
 @media only screen and (max-width: 766px) {
   nav ul {
